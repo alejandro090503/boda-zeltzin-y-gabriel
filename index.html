@@ -328,7 +328,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 /* ============ FECHA HERO ============ */
 .date-hero{
-  position:relative;padding:clamp(96px,14vh,200px) 0;
+  position:relative;padding:clamp(72px,10vh,150px) 0 clamp(210px,30vh,300px);
   background:#5C8241;
   color:#F8F5EC;text-align:center;isolation:isolate;overflow:hidden;
 }
@@ -336,11 +336,12 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .date-hero::after{
   content:"";position:absolute;inset:0;z-index:0;
   background:
-    linear-gradient(to bottom,
-      rgba(30,42,21,.42) 0%,
-      rgba(30,42,21,.30) 50%,
-      rgba(30,42,21,.42) 100%),
-    url('foto2.jpg') center 58%/cover no-repeat;
+    radial-gradient(ellipse 78% 62% at 50% 50%,
+      rgba(30,42,21,0) 0%,
+      rgba(30,42,21,.06) 45%,
+      rgba(30,42,21,.30) 78%,
+      rgba(30,42,21,.60) 100%),
+    url('foto2.jpg') center 62%/cover no-repeat;
   mask-image:linear-gradient(to bottom,
     transparent 0%,
     rgba(0,0,0,.15) 15%,
@@ -366,6 +367,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
   border:1px solid rgba(232,213,160,.25);pointer-events:none;
 }
 .date-hero > .container{position:relative;z-index:3}
+.date-eyebrow,.date-h,.date-num,.date-lbl{text-shadow:0 2px 18px rgba(20,30,14,.72),0 1px 3px rgba(20,30,14,.55)}
 .date-eyebrow{
   font-family:var(--sans);font-weight:600;
   font-size:13px;letter-spacing:.6em;
@@ -581,15 +583,44 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
   font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:13.5px;letter-spacing:.04em;
   color:var(--gold-deep);line-height:1.55;
-  margin-top:4px;text-align:center;
-  max-width:200px;
+  margin-top:auto;padding-top:6px;text-align:center;
+  max-width:220px;
 }
-/* Dos columnas */
-.dc-cols{display:flex;justify-content:center;align-items:flex-start;max-width:680px;margin:0 auto;gap:0}
-.dc-col{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 clamp(18px,3.5vw,44px)}
-.dc-figure{height:clamp(230px,38vw,300px);width:auto;object-fit:contain;object-position:bottom center;margin-bottom:22px;flex-shrink:0;filter:drop-shadow(0 14px 30px rgba(30,42,21,.18));display:block}
-.dc-col-label{font-family:var(--sans);font-size:11px;letter-spacing:.44em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:8px;padding-left:.44em}
-.dc-col-note{font-family:var(--italiana);font-size:14px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:30px;line-height:1.55;text-align:center}
+/* Dos columnas con frame hueso de borde desvanecido */
+.dc-cols{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;gap:clamp(12px,2.4vw,28px);
+  max-width:620px;margin:0 auto;
+}
+.dc-col{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  padding:clamp(20px,3vw,34px) clamp(10px,2vw,24px) clamp(24px,3vw,34px);
+}
+.dc-col::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(160deg,#FFFDF6 0%,#F9F3E3 58%,#F1EAD6 100%);
+  border-radius:12px;
+  -webkit-mask-image:
+    linear-gradient(to right,transparent 0%,rgba(0,0,0,.35) 7%,#000 22%,#000 78%,rgba(0,0,0,.35) 93%,transparent 100%),
+    linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.35) 5%,#000 16%,#000 84%,rgba(0,0,0,.35) 95%,transparent 100%);
+  -webkit-mask-composite:destination-in;
+  mask-image:
+    linear-gradient(to right,transparent 0%,rgba(0,0,0,.35) 7%,#000 22%,#000 78%,rgba(0,0,0,.35) 93%,transparent 100%),
+    linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.35) 5%,#000 16%,#000 84%,rgba(0,0,0,.35) 95%,transparent 100%);
+  mask-composite:intersect;
+  pointer-events:none;
+}
+.dc-col > *{position:relative;z-index:1}
+.dc-divider{display:none}
+.dc-warn-solo{
+  font-family:var(--sans);font-size:16px;font-weight:600;
+  color:#65552F;letter-spacing:.02em;line-height:1.5;
+  max-width:420px;margin:30px auto 0;text-align:center;
+}
+.dc-figure{height:clamp(180px,32vw,290px);width:auto;object-fit:contain;object-position:bottom center;margin-bottom:20px;flex-shrink:0;filter:drop-shadow(0 12px 26px rgba(30,42,21,.16));display:block}
+.dc-col-label{font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#65552F;font-weight:600;margin-bottom:10px;padding-left:.3em}
+.dc-col-note{font-family:var(--italiana);font-size:14px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:10px;line-height:1.55;text-align:center}
 .dc-divider{
   width:1px;align-self:stretch;flex-shrink:0;margin:0 4px;
   background:linear-gradient(to bottom,transparent 0%,rgba(184,168,122,.2) 12%,rgba(184,168,122,.62) 50%,rgba(184,168,122,.2) 88%,transparent 100%);
@@ -625,7 +656,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 .swatch-n{font-family:var(--sans);font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-soft);padding-left:.4em;font-weight:500}
 @media(max-width:540px){
-  .dc-cols{flex-direction:column;align-items:center;gap:32px}
+  .dc-cols{gap:10px}
   .dc-divider{width:clamp(80px,40%,140px);height:1px;align-self:auto;background:linear-gradient(to right,transparent 0%,rgba(184,168,122,.2) 12%,rgba(184,168,122,.62) 50%,rgba(184,168,122,.2) 88%,transparent 100%)}
   .dc-divider::before{background:var(--bg);padding:0 6px}
 }
@@ -1312,8 +1343,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .itin-time{font-weight:500 !important}
 .itin-desc{font-family:var(--sans) !important;font-size:16px !important;font-weight:500 !important;line-height:1.55}
 .itin-name{font-weight:600}
-.dc-col-note{font-family:var(--sans) !important;font-size:16px !important;font-weight:500 !important;letter-spacing:.02em;line-height:1.5;text-transform:none}
-.dc-col-warn{font-family:var(--sans) !important;font-size:15px !important;font-weight:600 !important;color:var(--gold-deep);line-height:1.5}
+.dc-col-note{font-family:var(--sans) !important;font-size:clamp(15px,3.6vw,16px) !important;font-weight:500 !important;letter-spacing:.01em;line-height:1.5;text-transform:none}
+.dc-col-warn{font-family:var(--sans) !important;font-size:clamp(14px,3.4vw,15px) !important;font-weight:600 !important;color:#65552F;line-height:1.45}
 .dc-col-label{font-weight:600}
 .gift-desc{font-size:17px !important;font-weight:500 !important;line-height:1.55}
 .gifts-sub,.kids-text,.album-text,.rsvp-text,.fam-names,.fam-invite{font-weight:500 !important}
@@ -1640,8 +1671,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <img class="dc-figure" src="dama.png" alt="Vestimenta semiformal para damas" loading="lazy">
           <div class="dc-col-label">Damas</div>
           <div class="dc-col-note">Vestido semiformal<br>Calzado cómodo para jardín</div>
-          <div class="dc-col-warn">Evitar blanco y blanco humo</div>
-        </div>
+          </div>
         <!-- Divisor -->
         <div class="dc-divider" aria-hidden="true"></div>
         <!-- Caballeros (después) -->
@@ -1649,9 +1679,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <img class="dc-figure" src="caballero.png" alt="Vestimenta semiformal para caballeros" loading="lazy">
           <div class="dc-col-label">Caballeros</div>
           <div class="dc-col-note">Traje semiformal<br>Calzado cómodo para jardín</div>
-          <div class="dc-col-warn">Evitar blanco y blanco humo</div>
-        </div>
+          </div>
       </div>
+      <p class="dc-warn-solo">Por favor evita el blanco y los tonos blanco humo</p>
       <p class="dress-note">El evento será en jardín — tenlo en cuenta al elegir tu calzado.<br>Arréglate bonito, que habrá fotógrafo y gente chismosa. Trae tu mejor versión y tus pasos prohibidos.<br><b>Pero lo más importante es tu presencia y tu sonrisa.</b></p>
     </div>
   </section>
