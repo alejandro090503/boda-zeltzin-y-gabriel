@@ -587,7 +587,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 /* Dos columnas */
 .dc-cols{display:flex;justify-content:center;align-items:flex-start;max-width:680px;margin:0 auto;gap:0}
 .dc-col{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 clamp(18px,3.5vw,44px)}
-.dc-icon{width:42px;height:42px;margin-bottom:16px;color:var(--accent-deep);opacity:.78;flex-shrink:0}
+.dc-figure{height:clamp(230px,38vw,300px);width:auto;object-fit:contain;object-position:bottom center;margin-bottom:22px;flex-shrink:0;filter:drop-shadow(0 14px 30px rgba(30,42,21,.18));display:block}
 .dc-col-label{font-family:var(--sans);font-size:11px;letter-spacing:.44em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:8px;padding-left:.44em}
 .dc-col-note{font-family:var(--italiana);font-size:14px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:30px;line-height:1.55;text-align:center}
 .dc-divider{
@@ -1637,12 +1637,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div class="dc-cols">
         <!-- Damas (primero) -->
         <div class="dc-col">
-          <svg class="dc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <circle cx="22" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M18 11 L22 18 L26 11" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M14 14 L10 40 L34 40 L30 14" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="currentColor" fill-opacity=".1"/>
-            <line x1="22" y1="18" x2="22" y2="40" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.5 2" opacity=".35"/>
-          </svg>
+          <img class="dc-figure" src="dama.png" alt="Vestimenta semiformal para damas" loading="lazy">
           <div class="dc-col-label">Damas</div>
           <div class="dc-col-note">Vestido semiformal<br>Calzado cómodo para jardín</div>
           <div class="dc-col-warn">Evitar blanco y blanco humo</div>
@@ -1651,14 +1646,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <div class="dc-divider" aria-hidden="true"></div>
         <!-- Caballeros (después) -->
         <div class="dc-col">
-          <svg class="dc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <circle cx="22" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M18 11 L12 20 L16 19 L22 26 L28 19 L32 20 L26 11" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="currentColor" fill-opacity=".12"/>
-            <line x1="22" y1="26" x2="22" y2="38" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M15 38 L22 26 L29 38" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-            <circle cx="22" cy="30" r="1.2" fill="currentColor" opacity=".55"/>
-            <circle cx="22" cy="34" r="1.2" fill="currentColor" opacity=".55"/>
-          </svg>
+          <img class="dc-figure" src="caballero.png" alt="Vestimenta semiformal para caballeros" loading="lazy">
           <div class="dc-col-label">Caballeros</div>
           <div class="dc-col-note">Traje semiformal<br>Calzado cómodo para jardín</div>
           <div class="dc-col-warn">Evitar blanco y blanco humo</div>
