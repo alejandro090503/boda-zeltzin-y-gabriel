@@ -1358,7 +1358,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
 <!-- ENVELOPE OPENING SEQUENCE -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir la invitación" tabindex="0">
-  <img id="env-image" src="envelope.png" alt="">
+  <img id="env-image" src="envelope.jpg" alt="">
   <video id="env-video" muted playsinline preload="auto">
     <source src="envelope.mp4" type="video/mp4">
   </video>
@@ -2015,11 +2015,11 @@ function launchInvitation(){
     envVideo.addEventListener('ended', triggerFlash);
   }
 
+  // El sobre se corta en el segundo 3 y funde suave hacia la invitación
+  const CUT_AT = 3;
   function onTimeUpdate(){
     if(flashed) return;
-    const dur = envVideo.duration;
-    if(!isFinite(dur) || dur <= 0) return;
-    if(envVideo.currentTime >= dur - 2) triggerFlash();
+    if(envVideo.currentTime >= CUT_AT) triggerFlash();
   }
 
   function triggerFlash(){
