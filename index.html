@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Zeltzin & Gabriel · 26 Diciembre 2026 · Tequesquitengo, Mor.</title>
-<meta name="description" content="Zeltzin & Gabriel · Nuestra boda · Sábado 26 de diciembre de 2026 · Tequesquitengo, Morelos">
+<title>Gabriel & Zeltzin · 26 Diciembre 2026 · Tequesquitengo, Mor.</title>
+<meta name="description" content="Gabriel & Zeltzin · Nuestra boda · Sábado 26 de diciembre de 2026 · Tequesquitengo, Morelos">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://boda-zeltzin-y-gabriel.vercel.app">
-<meta property="og:title" content="Zeltzin & Gabriel · 26 · 12 · 2026">
+<meta property="og:title" content="Gabriel & Zeltzin · 26 · 12 · 2026">
 <meta property="og:description" content="Nos casamos el sábado 26 de diciembre de 2026 en Tequesquitengo, Morelos — Abre tu invitación">
 <meta property="og:image" content="https://boda-zeltzin-y-gabriel.vercel.app/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -16,10 +16,9 @@
 <meta property="og:locale" content="es_MX">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zeltzin & Gabriel · 26 · 12 · 2026">
+<meta name="twitter:title" content="Gabriel & Zeltzin · 26 · 12 · 2026">
 <meta name="twitter:description" content="Nos casamos el sábado 26 de diciembre de 2026 en Tequesquitengo, Morelos — Abre tu invitación">
 <meta name="twitter:image" content="https://boda-zeltzin-y-gabriel.vercel.app/og.jpg">
-<link rel="preload" as="image" href="portada.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Pinyon+Script&family=Italiana&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -156,6 +155,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 
 /* ============ HERO ============ */
 .hero{
+  background:radial-gradient(ellipse 120% 80% at 50% 12%, #5C8241 0%, #42622D 48%, #2B3F1E 100%);
   position:relative;min-height:100vh;min-height:100svh;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;isolation:isolate;
@@ -328,7 +328,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 /* ============ FECHA HERO ============ */
 .date-hero{
-  position:relative;padding:clamp(72px,10vh,150px) 0 clamp(210px,30vh,300px);
+  position:relative;padding:clamp(84px,12vh,170px) 0;
   background:#5C8241;
   color:#F8F5EC;text-align:center;isolation:isolate;overflow:hidden;
 }
@@ -336,12 +336,10 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .date-hero::after{
   content:"";position:absolute;inset:0;z-index:0;
   background:
-    radial-gradient(ellipse 78% 62% at 50% 50%,
-      rgba(30,42,21,0) 0%,
-      rgba(30,42,21,.06) 45%,
-      rgba(30,42,21,.30) 78%,
-      rgba(30,42,21,.60) 100%),
-    url('foto2.jpg') center 62%/cover no-repeat;
+    radial-gradient(ellipse 90% 70% at 50% 42%,
+      rgba(255,255,255,.10) 0%,
+      rgba(255,255,255,.03) 45%,
+      rgba(30,42,21,.16) 100%);
   mask-image:linear-gradient(to bottom,
     transparent 0%,
     rgba(0,0,0,.15) 15%,
@@ -367,7 +365,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
   border:1px solid rgba(232,213,160,.25);pointer-events:none;
 }
 .date-hero > .container{position:relative;z-index:3}
-.date-eyebrow,.date-h,.date-num,.date-lbl{text-shadow:0 2px 18px rgba(20,30,14,.72),0 1px 3px rgba(20,30,14,.55)}
+.date-h,.date-num,.date-lbl{text-shadow:0 2px 14px rgba(20,30,14,.35)}
 .date-eyebrow{
   font-family:var(--sans);font-weight:600;
   font-size:13px;letter-spacing:.6em;
@@ -406,6 +404,20 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 .date-roman{display:none}
 
+.cal-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:44px;padding:16px 34px;border-radius:50px;
+  border:1.5px solid rgba(232,213,160,.75);
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:#FFF6DC;text-decoration:none;min-height:52px;
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.cal-btn:hover{background:rgba(255,255,255,.2);border-color:#FFE8A0;transform:translateY(-2px)}
+.cal-btn svg{width:18px;height:18px;flex-shrink:0}
+
 /* ============ HISTORIA ============ */
 .story{max-width:860px;margin:0 auto;text-align:center}
 .story-ornament{display:block;margin:0 auto 32px;width:100px;height:auto;opacity:.6}
@@ -428,6 +440,8 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .story-initials::after{right:-60px;background:linear-gradient(to left, transparent, var(--gold))}
 
 /* ============ FAMILIA Y PADRINOS ============ */
+.intro-editorial{position:relative;overflow:hidden}
+.intro-editorial .fam-intro{margin-bottom:0}
 .family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:900px;margin:0 auto}
 .family-grid--one{grid-template-columns:minmax(0,440px);justify-content:center}
 .family-grid--two{grid-template-columns:repeat(2,1fr);max-width:780px}
@@ -844,6 +858,56 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 .album-link:hover{color:var(--accent-deep);border-bottom-color:var(--accent-deep)}
 
+/* ============ HOSPEDAJE ============ */
+.lodging{text-align:center}
+.lodging-head{max-width:660px;margin:0 auto 12px}
+.lodging h2{font-size:clamp(36px,5vw,56px);margin-bottom:18px}
+.lodging-sub{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--ink-soft);line-height:1.6;max-width:440px;margin:0 auto}
+.hosp-carousel{position:relative;max-width:400px;margin:34px auto 0}
+.hosp-viewport{overflow:hidden}
+.hosp-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.hosp-slide{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 34px}
+.hosp-photo{
+  width:210px;height:210px;border-radius:50%;overflow:hidden;
+  border:3px solid rgba(184,168,122,.45);
+  box-shadow:0 14px 36px rgba(30,42,21,.20);
+  margin-bottom:24px;background:var(--paper);
+}
+.hosp-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hosp-arrow{
+  position:absolute;top:113px;transform:translateY(-50%);
+  width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.78);border:1px solid rgba(184,168,122,.4);
+  border-radius:50%;cursor:pointer;color:var(--accent-deep);z-index:2;padding:0;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  transition:background .25s,transform .25s;
+}
+.hosp-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.08)}
+.hosp-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.hosp-arrow.prev{left:-4px}
+.hosp-arrow.next{right:-4px}
+.hosp-dots{display:flex;justify-content:center;gap:9px;margin-top:24px}
+.hosp-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(184,168,122,.4);cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.hosp-dots button.active{background:var(--gold-deep);transform:scale(1.35)}
+.hosp-name{font-family:var(--display);font-weight:500;font-size:23px;color:var(--accent-deep);margin-bottom:8px;line-height:1.25}
+.hosp-city{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#65552F;margin-bottom:18px}
+.hosp-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-hosp{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border:1.5px solid var(--accent-deep);border-radius:50px;
+  color:var(--accent-deep);font-family:var(--sans);font-size:13px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:transparent;
+  min-height:46px;transition:background .25s,color .25s;
+}
+.btn-hosp:hover{background:var(--accent-deep);color:var(--paper)}
+.btn-hosp svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+@media(max-width:430px){
+  .hosp-carousel{max-width:340px}
+  .hosp-slide{padding:8px 26px}
+  .hosp-photo{width:184px;height:184px}
+  .hosp-arrow{top:100px}
+}
+
 /* ============ RSVP (diseño boda-jennifer) ============ */
 .rsvp{position:relative;overflow:hidden}
 .rsvp > .container{position:relative;z-index:1}
@@ -926,6 +990,25 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .rsvp-btn:hover::after{opacity:1}
 .rsvp-btn > *{position:relative;z-index:1}
 .rsvp-btn[disabled]{opacity:.6;cursor:default}
+.rsvp-field-row{display:flex;flex-direction:column;gap:8px;text-align:left}
+.rsvp-field-lbl{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#65552F}
+.rsvp-counters{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.rsvp-counter{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:16px 10px;border:1.5px solid rgba(184,168,122,.32);
+  border-radius:12px;background:rgba(255,255,255,.62);
+}
+.rsvp-counter-lbl{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.rsvp-stepper{display:flex;align-items:center;gap:14px}
+.rsvp-step{
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid rgba(184,168,122,.5);background:rgba(255,255,255,.9);
+  color:var(--accent-deep);font-size:20px;font-weight:600;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;padding:0;
+}
+.rsvp-step:hover{background:var(--accent-deep);color:var(--paper);transform:scale(1.06)}
+.rsvp-count{font-family:var(--display);font-style:italic;font-size:28px;color:var(--gold-deep);min-width:28px;text-align:center;line-height:1}
 #rsvp-feedback{font-family:var(--serif);font-style:italic;font-size:18px;font-weight:500;text-align:center;margin:16px auto 0;max-width:420px;display:none;line-height:1.55}
 .rsvp-deadline{
   display:inline-flex;align-items:center;gap:8px;margin-top:26px;
@@ -1076,17 +1159,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .itin-events{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(42px,7.5vh,88px);position:relative;z-index:2}
 .itin-event{position:relative;display:flex;flex-direction:column;align-items:center}
 .itin-marker{
-  width:14px;height:14px;border-radius:50%;
-  background:color-mix(in srgb,var(--paper) 86%,var(--gold));
-  border:1.5px solid rgba(184,168,122,.28);
+  width:56px;height:56px;border-radius:50%;
+  background:color-mix(in srgb,var(--paper) 92%,var(--gold));
+  border:1.5px solid rgba(184,168,122,.5);
   position:relative;z-index:3;flex-shrink:0;margin-bottom:22px;
+  display:flex;align-items:center;justify-content:center;
   opacity:.36;transition:opacity .55s ease,background .55s ease,box-shadow .55s ease,border-color .55s ease;
 }
 .itin-event.is-active .itin-marker{
   opacity:1;
-  background:radial-gradient(circle at 34% 30%,#fffef0 0%,#d4c89e 52%,#8a7a50 100%);
-  border-color:rgba(184,168,122,.88);
-  box-shadow:0 0 6px 2px rgba(212,200,158,.88),0 0 16px 6px rgba(184,168,122,.44),0 0 32px 10px rgba(184,168,122,.16);
+  background:radial-gradient(circle at 34% 30%,#fffef4 0%,#F4EBD0 60%,#E4D8AE 100%);
+  border-color:rgba(184,168,122,.9);
+  box-shadow:0 0 0 5px rgba(184,168,122,.10),0 6px 18px rgba(138,122,80,.22);
 }
 .itin-event.is-active .itin-marker::before{
   content:"";position:absolute;inset:-7px;border-radius:50%;
@@ -1145,6 +1229,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .hero-scroll::after{animation:none}
 }
+
+.itinerary-date{
+  font-family:var(--sans);font-size:15px;font-weight:600;
+  letter-spacing:.4em;color:var(--gold-deep);
+  text-align:center;margin-top:14px;padding-left:.4em;
+}
+
+.itin-marker svg{
+  position:absolute;top:50%;left:50%;
+  width:46%;height:46%;
+  transform:translate(-50%,-50%);
+  color:#8A7A50;opacity:.6;
+  pointer-events:none;z-index:3;
+}
+.itin-event.is-active .itin-marker svg{color:var(--accent-deep);opacity:1}
 
 /* ============ ENVELOPE OPENING SEQUENCE ============ */
 #loader{display:none !important}
@@ -1357,6 +1456,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .rsvp-field input{font-size:16px;font-weight:500}
 .album-link{font-weight:600}
 .eyebrow,.cer-eyebrow,.rsvp-pases-eyebrow{font-weight:600;font-size:12px;color:#65552F}
+.intro-editorial{position:relative;overflow:hidden}
+.intro-editorial .fam-intro{margin-bottom:0}
 .family-grid{margin-top:clamp(38px,5vw,56px) !important}
 .family .container > div[style*="text-align:center"] h2{margin-bottom:0}
 .fam-role{font-size:12px !important;font-weight:600 !important;letter-spacing:.34em;margin-bottom:20px}
@@ -1419,7 +1520,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg-wrap"><img class="hero-bg" src="portada.jpg" alt="" fetchpriority="high"></div>
     <div class="hero-bg-overlay"></div>
     <div class="hero-frame"></div>
     <div class="hero-frame-corners"></div>
@@ -1434,11 +1534,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <path d="M105 20 L125 20"/>
         </g>
       </svg>
-      <div class="hero-eyebrow" data-anim="hero-eyebrow">Save the date</div>
       <h1 class="hero-name">
-        <span class="hero-name-p" data-split="Zeltzin"></span>
+        <span class="hero-name-p" data-split="Gabriel"></span>
         <span class="hero-and">&amp;</span>
-        <span class="hero-name-l" data-split="Gabriel"></span>
+        <span class="hero-name-l" data-split="Zeltzin"></span>
       </h1>
       <div class="hero-date" data-anim="hero-date">
         <span>26</span><span class="sep">·</span><span>Diciembre</span><span class="sep">·</span><span>2026</span>
@@ -1449,6 +1548,53 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- DIVIDER: bg → surface -->
   <div class="seam" style="--from:transparent;--to:var(--surface)" aria-hidden="true"></div>
+
+  <!-- INTRO · versículo + invitación -->
+  <section class="section-paper intro-editorial">
+    <span class="mono-wm" aria-hidden="true">G &amp; Z</span>
+    <div class="container">
+      <div class="fam-intro">
+        <svg class="fam-intro-orn" viewBox="0 0 220 14" fill="none" aria-hidden="true">
+          <g stroke="var(--gold)" stroke-width=".9" opacity=".7" fill="none">
+            <path d="M4 7 L92 7" stroke-linecap="round"/>
+            <path d="M128 7 L216 7" stroke-linecap="round"/>
+            <circle cx="110" cy="7" r="3"/>
+            <circle cx="110" cy="7" r="1" fill="var(--gold)" stroke="none"/>
+          </g>
+        </svg>
+        <p class="fam-verse">&ldquo;El amor no reconoce barreras. Salta obstáculos, brinca vallas, penetra paredes para llegar a su destino lleno de esperanza&rdquo;</p>
+        <div class="fam-intro-rule" aria-hidden="true"></div>
+        <p class="fam-invite">Nos complace invitarles a nuestro enlace matrimonial</p>
+        <p class="fam-couple">Gabriel <span class="fam-couple-amp">&amp;</span> Zeltzin</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER: paper → surface -->
+  <div class="seam" style="--from:var(--paper);--to:var(--surface)" aria-hidden="true"></div>
+
+  <!-- FECHA HERO -->
+  <section class="date-hero">
+    <div class="container">
+      <h2 class="date-h">Nuestro <em>gran</em> día</h2>
+      <div class="date-numbers">
+        <div class="date-block">
+          <div class="date-num" data-count-to="26">0</div>
+          <div class="date-lbl">Diciembre</div>
+        </div>
+        <div class="date-block">
+          <div class="date-num" data-count-to="2026">0</div>
+          <div class="date-lbl">Sábado</div>
+        </div>
+      </div>
+      <a class="cal-btn" id="cal-btn" href="#" download="boda-gabriel-y-zeltzin.ics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M9 15l2 2 4-4"/>
+        </svg>
+        Guardar en calendario
+      </a>
+    </div>
+  </section>
 
   <!-- COUNTDOWN -->
   <section class="section-surface countdown">
@@ -1466,24 +1612,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   </section>
 
 
-  <!-- FECHA HERO -->
-  <section class="date-hero">
-    <div class="container">
-      <div class="date-eyebrow" data-anim="date-eb">Reserva la fecha</div>
-      <h2 class="date-h">Nuestro <em>gran</em> día</h2>
-      <div class="date-numbers">
-        <div class="date-block">
-          <div class="date-num" data-count-to="26">0</div>
-          <div class="date-lbl">Diciembre</div>
-        </div>
-        <div class="date-block">
-          <div class="date-num" data-count-to="2026">0</div>
-          <div class="date-lbl">Sábado</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- DIVIDER: date-hero dark → paper -->
   <div class="seam" style="--from:#5C8241;--to:var(--paper)" aria-hidden="true"></div>
 
@@ -1491,23 +1619,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <section class="section-paper family">
     <span class="mono-wm" aria-hidden="true">G &amp; Z</span>
     <div class="container">
-
-      <!-- Bloque editorial: versículo + invitación + nombres (tipografía depurada) -->
-      <div class="fam-intro">
-        <svg class="fam-intro-orn" viewBox="0 0 220 14" fill="none" aria-hidden="true">
-          <g stroke="var(--gold)" stroke-width=".9" opacity=".7" fill="none">
-            <path d="M4 7 L92 7" stroke-linecap="round"/>
-            <path d="M128 7 L216 7" stroke-linecap="round"/>
-            <circle cx="110" cy="7" r="3"/>
-            <circle cx="110" cy="7" r="1" fill="var(--gold)" stroke="none"/>
-          </g>
-        </svg>
-        <p class="fam-verse">&ldquo;Las muchas aguas no podrán apagar el amor,<br>ni lo ahogarán los ríos.&rdquo;</p>
-        <p class="fam-verse-cite">Cantares · 8 : 7</p>
-        <div class="fam-intro-rule" aria-hidden="true"></div>
-        <p class="fam-invite">Nos complace invitarles a nuestro enlace matrimonial</p>
-        <p class="fam-couple">Zeltzin <span class="fam-couple-amp">&amp;</span> Gabriel</p>
-      </div>
 
       <div style="text-align:center">
         <div class="eyebrow">Con la bendición de</div>
@@ -1602,6 +1713,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div class="cer-eyebrow cer-eyebrow--center">Itinerario</div>
       <h3 class="cel-h3">El <em>recorrido</em> de la noche</h3>
       <div class="itinerary-sub">una noche para recordar</div>
+      <div class="itinerary-date">26 · 12 · 2026</div>
 
       <div class="itin-wrap" id="itin">
         <div class="itin-track" aria-hidden="true">
@@ -1612,7 +1724,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         </div>
         <ul class="itin-events">
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">16:00</div>
               <div class="itin-name">Recepción de invitados</div>
@@ -1621,35 +1733,41 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M7.5 8.5h9"/><path d="M9 21h6"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">16:30</div>
               <div class="itin-name">Ceremonia Religiosa</div>
-              <div class="itin-desc">El momento en que unimos nuestras vidas ante Dios y ante ustedes.</div>
+              <div class="itin-desc">El momento en que unimos nuestras vidas ante Dios.</div>
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-8 8.5z"/><path d="M12 13.5V19"/><path d="M8.5 19.5h7"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">17:30</div>
               <div class="itin-name">Cóctel de Bienvenida</div>
-              <div class="itin-desc">Brindamos con ustedes antes de pasar a la mesa.</div>
+              <div class="itin-desc">Cócteles y bocadillos al caer la tarde.</div>
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7a2.5 2.5 0 002.5 2.5V21"/><path d="M7 3v6M10 3v6"/><path d="M17 3c-1.5 1.5-2.2 3.4-2.2 5.4 0 1.7.9 2.8 2.2 2.8V21"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">19:00</div>
               <div class="itin-name">Banquete</div>
-              <div class="itin-desc">Compartimos la mesa y las palabras de nuestros padrinos.</div>
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="5" r="2"/><path d="M9 7v5l-3 4M9 12l3 3v5M6 20v-1"/><path d="M17 6l3-1v9a2 2 0 11-2-2"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">20:30</div>
               <div class="itin-name">¡A bailar!</div>
               <div class="itin-desc">Abrimos la pista y celebramos hasta que el cuerpo aguante.</div>
+            </div>
+          </li>
+          <li class="itin-event">
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4L7.5 16.8l.9-5L4.8 8.3l5-.7z"/></svg></span>
+            <div class="itin-card">
+              <div class="itin-time">00:00</div>
+              <div class="itin-name">Tornaboda</div>
             </div>
           </li>
         </ul>
@@ -1664,24 +1782,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <section class="section-bg dress">
     <div class="container">
       <div class="eyebrow">Código de vestimenta</div>
-      <h2>Semiformal</h2>
-      <div class="dc-cols">
-        <!-- Damas (primero) -->
-        <div class="dc-col">
-          <img class="dc-figure" src="dama.png" alt="Vestimenta semiformal para damas" loading="lazy">
-          <div class="dc-col-label">Damas</div>
-          <div class="dc-col-note">Vestido semiformal<br>Calzado cómodo para jardín</div>
-          </div>
-        <!-- Divisor -->
-        <div class="dc-divider" aria-hidden="true"></div>
-        <!-- Caballeros (después) -->
-        <div class="dc-col">
-          <img class="dc-figure" src="caballero.png" alt="Vestimenta semiformal para caballeros" loading="lazy">
-          <div class="dc-col-label">Caballeros</div>
-          <div class="dc-col-note">Traje semiformal<br>Calzado cómodo para jardín</div>
-          </div>
-      </div>
-      <p class="dc-warn-solo">Por favor evita el blanco y los tonos blanco humo</p>
+      <h2>Casual Formal<br><span class="dress-sub-line">Jardín</span></h2>
+      <p class="dc-warn-solo">Los tonos <b>blanco</b>, <b>beige</b>, <b>ivory</b> y sus derivados están reservados exclusivamente para la novia.</p>
       <p class="dress-note">El evento será en jardín — tenlo en cuenta al elegir tu calzado.<br>Arréglate bonito, que habrá fotógrafo y gente chismosa. Trae tu mejor versión y tus pasos prohibidos.<br><b>Pero lo más importante es tu presencia y tu sonrisa.</b></p>
     </div>
   </section>
@@ -1698,12 +1800,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     </div>
     <div class="wheel-scene" id="wheel-scene">
       <div class="wheel-ring" id="wheel-ring">
-        <div class="wheel-card"><img data-src="foto1.jpg" alt="Zeltzin y Gabriel" /></div>
-        <div class="wheel-card"><img data-src="foto2.jpg" alt="Zeltzin y Gabriel" /></div>
-        <div class="wheel-card"><img data-src="foto3.jpg" alt="Zeltzin y Gabriel" /></div>
-        <div class="wheel-card"><img data-src="foto4.jpg" alt="Zeltzin y Gabriel" /></div>
-        <div class="wheel-card"><img data-src="portada.jpg" alt="Zeltzin y Gabriel" /></div>
-        <div class="wheel-card"><img data-src="venue.jpg" alt="Zeltzin y Gabriel" /></div>
+        <div class="wheel-card"><img data-src="foto1.jpg" alt="Gabriel y Zeltzin" /></div>
+        <div class="wheel-card"><img data-src="foto2.jpg" alt="Gabriel y Zeltzin" /></div>
+        <div class="wheel-card"><img data-src="foto3.jpg" alt="Gabriel y Zeltzin" /></div>
+        <div class="wheel-card"><img data-src="foto4.jpg" alt="Gabriel y Zeltzin" /></div>
+        <div class="wheel-card"><img data-src="portada.jpg" alt="Gabriel y Zeltzin" /></div>
       </div>
     </div>
     <p class="gal-hint">Arrastra para girar</p>
@@ -1714,12 +1815,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- GIFTS -->
   <section class="section-surface gifts" id="gifts">
-    <div class="env-rain" id="envRain" aria-hidden="true"></div>
     <div class="container gifts-stage">
       <div class="gifts-head">
-        <div class="eyebrow">Tu presencia es nuestro regalo</div>
-        <h2>Mesa <em>de</em> regalos</h2>
-        <p class="gifts-sub">El destino nos unió y tu cariño nos acompaña. Si deseas bendecir nuestro inicio con un obsequio, aquí te dejamos dos formas de hacerlo.</p>
+        <h2 class="gifts-h">Para nosotros lo más <em>importante</em> es tu presencia</h2>
+        <p class="gifts-sub">Nuestro mayor regalo es que estés con nosotros, pero si deseas hacernos un obsequio te dejamos esta opción</p>
       </div>
 
       <div class="gifts-duo">
@@ -1754,57 +1853,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 <path d="M43.214 5.94777H41.2177V7.93466H43.214V5.94777Z" fill="white"/>
 <path d="M117.43 8.52778C116.704 8.52778 116.121 7.9478 116.121 7.23312C116.121 6.51844 116.704 5.94221 117.43 5.94221C118.156 5.94221 118.744 6.51657 118.744 7.23312C118.744 7.94967 118.156 8.52778 117.43 8.52778ZM117.43 6.15549C116.826 6.15549 116.338 6.63631 116.338 7.23312C116.338 7.82994 116.826 8.31262 117.43 8.31262C118.035 8.31262 118.529 7.82806 118.529 7.23312C118.529 6.63818 118.036 6.15549 117.43 6.15549ZM116.856 6.5596H117.479C117.829 6.5596 117.945 6.77288 117.945 6.92255C117.945 7.14893 117.782 7.30983 117.544 7.32292V7.33228C117.668 7.37344 117.754 7.4913 117.872 7.67839L118.044 7.94967H117.767L117.642 7.73265C117.462 7.42208 117.395 7.35847 117.221 7.35847H117.084V7.94967H116.856V6.5596ZM117.413 7.16577C117.587 7.16577 117.705 7.10029 117.705 6.95623C117.705 6.82901 117.601 6.74856 117.453 6.74856H117.086V7.16764H117.413V7.16577Z" fill="white"/>
 </svg></div>
-            <p class="gb-event">Boda Zeltzin y Gabriel<br>Evento No. 60028540</p>
+            <p class="gb-event">Boda Gabriel y Zeltzin<br>Evento No. 60028540</p>
             <a class="gb-btn" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60028540" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
               Ver mesa de regalos
             </a>
           </div>
-        </div>
-
-        <!-- LLUVIA DE SOBRES -->
-        <div class="env-stage">
-          <button class="env-interactive" id="envGift" type="button" aria-label="Sobre — toca para abrir" aria-expanded="false">
-            <div class="env-body" id="envGiftBody">
-              <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="envPaper" x1="0" y1="1" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#FBF8EF"/><stop offset="100%" stop-color="#F0E9D4"/>
-                  </linearGradient>
-                </defs>
-                <rect x="18" y="52" width="224" height="132" rx="8" fill="url(#envPaper)" stroke="rgba(66,98,45,.45)" stroke-width="1.4"/>
-                <path d="M18 184 L130 110 L242 184" stroke="rgba(66,98,45,.28)" stroke-width="1" fill="none"/>
-              </svg>
-              <div class="env-flap-wrap" aria-hidden="true">
-                <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%;display:block">
-                  <defs>
-                    <linearGradient id="envFlap" x1="0" y1="1" x2="1" y2="0">
-                      <stop offset="0%" stop-color="#F0E9D4"/><stop offset="100%" stop-color="#FFFCF4"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M0 0 L112 86 L224 0 Z" fill="url(#envFlap)" stroke="rgba(66,98,45,.45)" stroke-width="1.5" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <svg class="env-seal" viewBox="0 0 60 60" aria-hidden="true">
-                <circle cx="30" cy="30" r="28" fill="#42622D"/>
-                <circle cx="30" cy="30" r="28" fill="none" stroke="#1E2A15" stroke-width="2" opacity=".55"/>
-                <circle cx="30" cy="30" r="21.5" fill="none" stroke="#E8D9A0" stroke-width="1.1" opacity=".9"/>
-                <text x="30" y="37" text-anchor="middle" font-family="'Pinyon Script', cursive" font-size="24" fill="#E8D9A0">G&amp;Z</text>
-              </svg>
-            </div>
-            <div class="env-open-content" aria-live="polite">
-              <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="8" y="22" width="36" height="24" rx="5"/>
-                <path d="M8 30 Q26 38 44 30"/>
-                <rect x="18" y="8" width="16" height="16" rx="2"/>
-                <path d="M18 8 Q26 3 34 8"/>
-                <rect x="20" y="28" width="12" height="2.5" rx="1.25" fill="currentColor" stroke="none" opacity=".4"/>
-              </svg>
-              <p class="env-title">Lluvia de sobres</p>
-              <p class="env-desc">El día del evento habrá una urna donde podrás depositar tu sobre con mucho cariño.</p>
-            </div>
-          </button>
-          <p class="env-tap-hint" id="envGiftHint">Toca para abrir</p>
         </div>
 
       </div>
@@ -1813,23 +1867,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- DIVIDER: surface → paper -->
   <div class="seam" style="--from:var(--surface);--to:var(--paper)" aria-hidden="true"></div>
-
-  <!-- KIDS POLICY -->
-  <section class="section-paper kids-policy">
-    <div class="container kids-inner">
-      <div class="eyebrow">Una nota cariñosa</div>
-      <h2>Una celebración <em>de</em> adultos</h2>
-      <div class="kids-icon">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
-          <circle cx="36" cy="36" r="28" style="--len:176"/>
-          <path d="M36 16 Q24 28 24 40 Q24 52 36 56 Q48 52 48 40 Q48 28 36 16 Z" style="--len:180" fill="var(--gold-soft)" fill-opacity=".18"/>
-          <path d="M36 26 L36 42" style="--len:16"/>
-          <circle cx="36" cy="46" r="2" style="--len:14" fill="var(--gold)"/>
-        </svg>
-      </div>
-      <p class="kids-text">Agradecemos su comprensión al considerar este evento exclusivamente para adultos.</p>
-    </div>
-  </section>
 
   <!-- DIVIDER: paper → bg -->
   <div class="seam" style="--from:var(--paper);--to:var(--bg)" aria-hidden="true"></div>
@@ -1850,6 +1887,67 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- DIVIDER: bg → paper -->
   <div class="seam" style="--from:var(--bg);--to:var(--paper)" aria-hidden="true"></div>
+
+  <!-- HOSPEDAJE -->
+  <section class="section-surface lodging" id="lodging">
+    <div class="container">
+      <div class="lodging-head">
+        <div class="eyebrow">Para tu estancia</div>
+        <h2>Hospedaje <em>sugerido</em></h2>
+        <p class="lodging-sub">Si vienes de fuera, te recomendamos estas opciones cercanas al lago.</p>
+      </div>
+
+      <div class="hosp-carousel">
+        <button class="hosp-arrow prev" type="button" aria-label="Hotel anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="hosp-arrow next" type="button" aria-label="Hotel siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="hosp-viewport">
+          <div class="hosp-track" id="hospTrack">
+        <div class="hosp-slide">
+          <div class="hosp-photo"><img src="hotel-1.jpg" alt="Hotel Excelaris Grand Resort" loading="lazy"></div>
+          <div class="hosp-name">Hotel Excelaris Grand Resort</div>
+          <div class="hosp-city">Tequesquitengo, Morelos</div>
+          <div class="hosp-btns">
+            <a class="btn-hosp" href="https://maps.app.goo.gl/XX6emmnodWMpLA3A8" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cómo llegar
+            </a>
+          </div>
+        </div>
+        <div class="hosp-slide">
+          <div class="hosp-photo"><img src="hotel-2.jpg" alt="Hotel Ameyali" loading="lazy"></div>
+          <div class="hosp-name">Hotel Ameyali</div>
+          <div class="hosp-city">Tequesquitengo, Morelos</div>
+          <div class="hosp-btns">
+            <a class="btn-hosp" href="https://maps.app.goo.gl/RNFBV45QkKyfqfeo8" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cómo llegar
+            </a>
+          </div>
+        </div>
+        <div class="hosp-slide">
+          <div class="hosp-photo"><img src="hotel-3.jpg" alt="Hotel Villa Béjar y Spa" loading="lazy"></div>
+          <div class="hosp-name">Hotel Villa Béjar &amp; Spa</div>
+          <div class="hosp-city">Tequesquitengo, Morelos</div>
+          <div class="hosp-btns">
+            <a class="btn-hosp" href="https://maps.app.goo.gl/28GpsADvQKjPqb779" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cómo llegar
+            </a>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="hosp-dots" id="hospDots">
+        <button class="active" aria-label="Hotel 1"></button>
+        <button aria-label="Hotel 2"></button>
+        <button aria-label="Hotel 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER: surface → paper -->
+  <div class="seam" style="--from:var(--surface);--to:var(--paper)" aria-hidden="true"></div>
 
   <!-- RSVP -->
   <section class="section-paper rsvp" id="rsvp">
@@ -1882,11 +1980,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
           <div class="rsvp-divider">
             <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-          </div>
-
-          <div class="rsvp-pases-display" id="rsvp-pases-display">
-            <div class="rsvp-pases-label">Pases reservados</div>
-            <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
           </div>
 
           <div class="rsvp-toggle">
@@ -1922,7 +2015,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <path d="M128 38 Q130 43 132 38" opacity=".7"/>
         </g>
       </svg>
-      <div class="footer-names">Zeltzin <span class="amp">&amp;</span> Gabriel</div>
+      <div class="footer-names">Gabriel <span class="amp">&amp;</span> Zeltzin</div>
       <div class="footer-date">26 · 12 · 2026 · Tequesquitengo, Morelos</div>
       <div class="footer-credit">
         <span class="credit-label">Invitación diseñada por</span>
@@ -2046,7 +2139,7 @@ function launchInvitation(){
   }
 
   // El sobre se corta en el segundo 3 y funde suave hacia la invitación
-  const CUT_AT = 3;
+  const CUT_AT = 4;
   function onTimeUpdate(){
     if(flashed) return;
     if(envVideo.currentTime >= CUT_AT) triggerFlash();
@@ -2058,7 +2151,7 @@ function launchInvitation(){
 
     // Flash fade → 1 mientras el video termina
     gsap.to(envFlash,{
-      opacity:1, duration:1.4, ease:'power2.inOut',
+      opacity:1, duration:1.9, ease:'sine.inOut',
       onComplete: ()=>{
         envScreen.style.display = 'none';
         wrap.style.visibility = 'visible';
@@ -2644,18 +2737,40 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
   if (pasesNumEl) pasesNumEl.textContent = urlPases;
   if (urlPara && nameEl) { nameEl.textContent = urlPara; nameEl.style.display = 'block'; }
 
-  function renderFields(count){
+  function renderFields(){
     if (!fieldsEl) return;
-    fieldsEl.innerHTML = '';
-    for (var i = 0; i < count; i++){
-      var inp = document.createElement('input');
-      inp.className = 'rsvp-input';
-      inp.type = 'text';
-      inp.placeholder = 'Invitado ' + (i + 1);
-      inp.autocomplete = 'off';
-      if (i === 0 && urlPara) inp.value = urlPara;
-      fieldsEl.appendChild(inp);
-    }
+    fieldsEl.innerHTML =
+      '<div class="rsvp-field-row">' +
+        '<label class="rsvp-field-lbl" for="rsvp-nombre">Nombre del invitado</label>' +
+        '<input class="rsvp-input" id="rsvp-nombre" type="text" placeholder="Nombre completo" autocomplete="off"' +
+          (urlPara ? ' value="' + urlPara.replace(/"/g, '&quot;') + '"' : '') + '>' +
+      '</div>' +
+      '<div class="rsvp-counters">' +
+        '<div class="rsvp-counter">' +
+          '<span class="rsvp-counter-lbl">Adultos</span>' +
+          '<div class="rsvp-stepper">' +
+            '<button type="button" class="rsvp-step" data-t="adultos" data-d="-1" aria-label="Menos adultos">−</button>' +
+            '<span class="rsvp-count" id="rsvp-adultos">1</span>' +
+            '<button type="button" class="rsvp-step" data-t="adultos" data-d="1" aria-label="Más adultos">+</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="rsvp-counter">' +
+          '<span class="rsvp-counter-lbl">Niños</span>' +
+          '<div class="rsvp-stepper">' +
+            '<button type="button" class="rsvp-step" data-t="ninos" data-d="-1" aria-label="Menos niños">−</button>' +
+            '<span class="rsvp-count" id="rsvp-ninos">0</span>' +
+            '<button type="button" class="rsvp-step" data-t="ninos" data-d="1" aria-label="Más niños">+</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    fieldsEl.querySelectorAll('.rsvp-step').forEach(function(b){
+      b.addEventListener('click', function(){
+        var el = document.getElementById('rsvp-' + b.dataset.t);
+        var min = b.dataset.t === 'adultos' ? 1 : 0;
+        var v = Math.max(min, Math.min(20, parseInt(el.textContent, 10) + parseInt(b.dataset.d, 10)));
+        el.textContent = v;
+      });
+    });
   }
 
   function selectRsvp(choice){
@@ -2670,7 +2785,7 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
     }
     if (fieldsEl){
       if (choice === 'yes'){
-        renderFields(urlPases);
+        renderFields();
         fieldsEl.style.display = '';
       } else {
         fieldsEl.innerHTML = '';
@@ -2698,9 +2813,14 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
           selectRsvp('yes');
           if (btnText) btnText.textContent = 'Actualizar respuesta';
           var prev = inv.nombres_confirmados || [];
-          if (prev.length && fieldsEl){
-            var inputs = fieldsEl.querySelectorAll('input');
-            prev.forEach(function(n, i){ if (inputs[i]) inputs[i].value = n; });
+          if (prev.length){
+            var m = String(prev[0]).match(/^(.*?)\s*·\s*(\d+)\s*adulto[s]?(?:\s*y\s*(\d+)\s*niño[s]?)?/);
+            var nomEl = document.getElementById('rsvp-nombre');
+            if (m && nomEl){
+              nomEl.value = m[1];
+              document.getElementById('rsvp-adultos').textContent = m[2];
+              document.getElementById('rsvp-ninos').textContent = m[3] || '0';
+            } else if (nomEl){ nomEl.value = prev[0]; }
           }
         } else if (inv.estado === 'declino'){
           selectRsvp('no');
@@ -2726,13 +2846,19 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
         msg('Por favor elige si nos acompañarás.', 'var(--gold-deep)');
         return;
       }
-      var nombres = [];
+      var adultos = 0, ninos = 0, nombreInv = '';
       if (rsvpChoice === 'yes' && fieldsEl){
-        nombres = Array.from(fieldsEl.querySelectorAll('input'))
-          .map(function(i){ return i.value.trim(); })
-          .filter(function(n){ return n.length > 0; });
+        var inp = document.getElementById('rsvp-nombre');
+        nombreInv = inp ? inp.value.trim() : '';
+        adultos = parseInt((document.getElementById('rsvp-adultos') || {}).textContent || '1', 10);
+        ninos   = parseInt((document.getElementById('rsvp-ninos')   || {}).textContent || '0', 10);
       }
-      var nombre = urlPara || (nombres[0] || '');
+      var nombre = nombreInv || urlPara || '';
+      var nombres = [];
+      if (rsvpChoice === 'yes'){
+        nombres.push(nombre + ' · ' + adultos + ' adulto' + (adultos === 1 ? '' : 's') +
+                     (ninos > 0 ? ' y ' + ninos + ' niño' + (ninos === 1 ? '' : 's') : ''));
+      }
       if (!nombre){
         msg('Por favor escribe tu nombre.', 'var(--gold-deep)');
         return;
@@ -2747,7 +2873,7 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
           url_boda: RSVP_URL,
           estado: rsvpChoice === 'yes' ? 'confirmado' : 'declino',
           pases: urlPases,
-          pases_confirmados: rsvpChoice === 'yes' ? (nombres.length || urlPases) : 0,
+          pases_confirmados: rsvpChoice === 'yes' ? (adultos + ninos) : 0,
           nombres_confirmados: rsvpChoice === 'yes' ? nombres : []
         })
       })
@@ -2768,6 +2894,56 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
       });
     });
   }
+})();
+
+// ------ HOSPEDAJE · carrusel swipe ------
+(function(){
+  var track = document.getElementById('hospTrack');
+  if(!track) return;
+  var slides = track.children.length;
+  var dots = document.querySelectorAll('#hospDots button');
+  var idx = 0;
+  function go(i){
+    idx = (i + slides) % slides;
+    track.style.transform = 'translateX(' + (-idx*100) + '%)';
+    dots.forEach(function(d,k){ d.classList.toggle('active', k === idx); });
+  }
+  var prev = document.querySelector('.hosp-arrow.prev');
+  var next = document.querySelector('.hosp-arrow.next');
+  if(prev) prev.addEventListener('click', function(){ go(idx-1); });
+  if(next) next.addEventListener('click', function(){ go(idx+1); });
+  dots.forEach(function(d,k){ d.addEventListener('click', function(){ go(k); }); });
+  var sx=0, sy=0;
+  track.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? idx+1 : idx-1);
+  }, {passive:true});
+  go(0);
+  gsap.fromTo('#lodging .eyebrow, #lodging h2, .lodging-sub', {opacity:0,y:16},
+    {opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'#lodging',start:'top 80%'}});
+  gsap.fromTo('.hosp-carousel', {opacity:0,y:34,scale:.96},
+    {opacity:1,y:0,scale:1,duration:.9,ease:'power4.out',scrollTrigger:{trigger:'#lodging',start:'top 80%',once:true}});
+})();
+
+// ------ GUARDAR EN CALENDARIO (.ics) ------
+(function(){
+  var btn = document.getElementById('cal-btn');
+  if(!btn) return;
+  var ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Elysium Invitaciones//Boda//ES',
+    'CALSCALE:GREGORIAN','BEGIN:VEVENT',
+    'UID:boda-gabriel-zeltzin-2026@elysium',
+    'DTSTAMP:20260821T000000Z',
+    'DTSTART:20261226T223000Z',   // 16:30 hrs (UTC-6)
+    'DTEND:20261227T060000Z',
+    'SUMMARY:Boda de Gabriel y Zeltzin',
+    'DESCRIPTION:Nos casamos. Te esperamos en Jardín del Lago, Tequesquitengo.',
+    'LOCATION:Jardín del Lago, Av. Circunvalación s/n, Tequesquitengo, 62909 Puente de Ixtla, Morelos',
+    'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Mañana es la boda de Gabriel y Zeltzin','END:VALARM',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\\r\\n');
+  btn.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
 })();
 
 // ------ MUSIC BUTTON (vinilo play/pause) ------
