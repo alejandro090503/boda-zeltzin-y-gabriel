@@ -329,17 +329,17 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 /* ============ FECHA HERO ============ */
 .date-hero{
   position:relative;padding:clamp(84px,12vh,170px) 0;
-  background:#5C8241;
+  background:#3B5828;
   color:#F8F5EC;text-align:center;isolation:isolate;overflow:hidden;
 }
 /* Capa de imagen con mask â€" difumina top/bottom */
 .date-hero::after{
-  content:"";position:absolute;inset:0;z-index:0;
+  content:"";position:absolute;inset:0;z-index:1;
   background:
-    radial-gradient(ellipse 90% 70% at 50% 42%,
-      rgba(255,255,255,.10) 0%,
-      rgba(255,255,255,.03) 45%,
-      rgba(30,42,21,.16) 100%);
+    radial-gradient(ellipse 92% 74% at 50% 46%,
+      rgba(23,34,16,.34) 0%,
+      rgba(23,34,16,.20) 48%,
+      rgba(23,34,16,.36) 100%);
   mask-image:linear-gradient(to bottom,
     transparent 0%,
     rgba(0,0,0,.15) 15%,
@@ -363,6 +363,46 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .date-hero::before{
   content:"";position:absolute;inset:32px;z-index:2;
   border:1px solid rgba(232,213,160,.25);pointer-events:none;
+}
+
+/* Malla de degradados en movimiento — responsiva (todo en %) */
+.date-mesh{
+  position:absolute;inset:-25%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(38% 42% at 22% 28%, rgba(92,130,65,.72) 0%, rgba(92,130,65,0) 70%),
+    radial-gradient(46% 38% at 78% 24%, rgba(43,63,30,.80) 0%, rgba(43,63,30,0) 72%),
+    radial-gradient(40% 46% at 68% 76%, rgba(107,143,82,.55) 0%, rgba(107,143,82,0) 70%);
+  filter:blur(28px);
+  will-change:transform;
+  animation:meshDriftA 26s ease-in-out infinite alternate;
+}
+.date-mesh--b{
+  background:
+    radial-gradient(44% 40% at 30% 74%, rgba(30,42,21,.75) 0%, rgba(30,42,21,0) 70%),
+    radial-gradient(34% 36% at 82% 58%, rgba(212,200,158,.18) 0%, rgba(212,200,158,0) 72%),
+    radial-gradient(40% 44% at 46% 12%, rgba(75,108,52,.70) 0%, rgba(75,108,52,0) 70%);
+  filter:blur(38px);
+  animation:meshDriftB 34s ease-in-out infinite alternate;
+}
+@keyframes meshDriftA{
+   0%{transform:translate3d(-4%,-3%,0) scale(1.06) rotate(0deg)}
+  25%{transform:translate3d(5%,2%,0)   scale(1.12) rotate(3deg)}
+  50%{transform:translate3d(2%,6%,0)   scale(1.04) rotate(-2deg)}
+  75%{transform:translate3d(-6%,3%,0)  scale(1.1)  rotate(2deg)}
+ 100%{transform:translate3d(3%,-5%,0)  scale(1.07) rotate(-3deg)}
+}
+@keyframes meshDriftB{
+   0%{transform:translate3d(4%,4%,0)   scale(1.1)  rotate(0deg)}
+  30%{transform:translate3d(-5%,1%,0)  scale(1.04) rotate(-4deg)}
+  60%{transform:translate3d(-2%,-6%,0) scale(1.14) rotate(3deg)}
+ 100%{transform:translate3d(6%,-2%,0)  scale(1.06) rotate(-2deg)}
+}
+@media(max-width:600px){
+  .date-mesh{filter:blur(22px)}
+  .date-mesh--b{filter:blur(30px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .date-mesh,.date-mesh--b{animation:none}
 }
 .date-hero > .container{position:relative;z-index:3}
 .date-h,.date-num,.date-lbl{text-shadow:0 2px 14px rgba(20,30,14,.35)}
@@ -1159,7 +1199,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .itin-events{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(42px,7.5vh,88px);position:relative;z-index:2}
 .itin-event{position:relative;display:flex;flex-direction:column;align-items:center}
 .itin-marker{
-  width:56px;height:56px;border-radius:50%;
+  width:50px;height:50px;border-radius:50%;
   background:color-mix(in srgb,var(--paper) 92%,var(--gold));
   border:1.5px solid rgba(184,168,122,.5);
   position:relative;z-index:3;flex-shrink:0;margin-bottom:22px;
@@ -1238,12 +1278,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
 .itin-marker svg{
   position:absolute;top:50%;left:50%;
-  width:46%;height:46%;
+  width:22px;height:22px;
   transform:translate(-50%,-50%);
-  color:#8A7A50;opacity:.6;
+  stroke:currentColor;stroke-width:1.4;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+  color:var(--gold);opacity:.75;
   pointer-events:none;z-index:3;
 }
-.itin-event.is-active .itin-marker svg{color:var(--accent-deep);opacity:1}
+.itin-event.is-active .itin-marker svg{color:var(--gold-deep);opacity:1}
 
 /* ============ ENVELOPE OPENING SEQUENCE ============ */
 #loader{display:none !important}
@@ -1575,6 +1617,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- FECHA HERO -->
   <section class="date-hero">
+    <span class="date-mesh" aria-hidden="true"></span>
+    <span class="date-mesh date-mesh--b" aria-hidden="true"></span>
     <div class="container">
       <h2 class="date-h">Nuestro <em>gran</em> día</h2>
       <div class="date-numbers">
@@ -1724,7 +1768,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         </div>
         <ul class="itin-events">
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/><circle cx="12" cy="10" r="3" fill="none"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">16:00</div>
               <div class="itin-name">Recepción de invitados</div>
@@ -1733,7 +1777,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M7.5 8.5h9"/><path d="M9 21h6"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 2l-3 3M12 2l3 3"/><rect x="8" y="6" width="8" height="12" rx="1"/><path d="M10 6V4M14 6V4"/><line x1="10" y1="10" x2="14" y2="10"/><line x1="10" y1="13" x2="14" y2="13"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">16:30</div>
               <div class="itin-name">Ceremonia Religiosa</div>
@@ -1741,7 +1785,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-8 8.5z"/><path d="M12 13.5V19"/><path d="M8.5 19.5h7"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3l8 0L12 11 8 3z"/><line x1="12" y1="11" x2="12" y2="19"/><line x1="9" y1="19" x2="15" y2="19"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">17:30</div>
               <div class="itin-name">Cóctel de Bienvenida</div>
@@ -1749,14 +1793,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7a2.5 2.5 0 002.5 2.5V21"/><path d="M7 3v6M10 3v6"/><path d="M17 3c-1.5 1.5-2.2 3.4-2.2 5.4 0 1.7.9 2.8 2.2 2.8V21"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11h18M5 7h14l1 4H4l1-4zM6 11v6a2 2 0 002 2h8a2 2 0 002-2v-6"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">19:00</div>
               <div class="itin-name">Banquete</div>
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="5" r="2"/><path d="M9 7v5l-3 4M9 12l3 3v5M6 20v-1"/><path d="M17 6l3-1v9a2 2 0 11-2-2"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="4" r="2"/><circle cx="16" cy="4" r="2"/><path d="M8 7c-2 1-3 4-2 7l2 5M16 7c2 1 3 4 2 7l-2 5"/><path d="M10 10l4-1"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">20:30</div>
               <div class="itin-name">¡A bailar!</div>
@@ -1764,7 +1808,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4L7.5 16.8l.9-5L4.8 8.3l5-.7z"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V6l12-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">00:00</div>
               <div class="itin-name">Tornaboda</div>
