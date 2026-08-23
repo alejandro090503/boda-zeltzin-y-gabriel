@@ -456,6 +456,13 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
   transition:background .3s,border-color .3s,transform .3s;
 }
 .cal-btn:hover{background:rgba(255,255,255,.2);border-color:#FFE8A0;transform:translateY(-2px)}
+.cal-row{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:44px}
+.cal-row .cal-btn{margin-top:0}
+.cal-btn--alt{
+  padding:13px 30px;font-size:12px;
+  background:transparent;border-color:rgba(232,213,160,.45);color:#F0E6C8;
+}
+.cal-btn--alt svg{width:16px;height:16px}
 .cal-btn svg{width:18px;height:18px;flex-shrink:0}
 
 /* ============ HISTORIA ============ */
@@ -480,8 +487,60 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .story-initials::after{right:-60px;background:linear-gradient(to left, transparent, var(--gold))}
 
 /* ============ FAMILIA Y PADRINOS ============ */
-.intro-editorial{position:relative;overflow:hidden}
-.intro-editorial .fam-intro{margin-bottom:0}
+/* ---- INTRO (diseño boda-nelly-y-anyelo, paleta olivo/crema) ---- */
+.intro-card{position:relative;overflow:hidden;text-align:center}
+.intro-inner{position:relative;z-index:1;max-width:620px;padding-left:clamp(30px,7vw,56px);padding-right:clamp(30px,7vw,56px)}
+.intro-corner{position:absolute;width:84px;height:84px;pointer-events:none;opacity:.6;z-index:0}
+.intro-corner svg{width:100%;height:100%;display:block}
+.ic-tl{top:12px;left:12px}
+.ic-tr{top:12px;right:12px;transform:scaleX(-1)}
+.ic-bl{bottom:12px;left:12px;transform:scaleY(-1)}
+.ic-br{bottom:12px;right:12px;transform:scale(-1)}
+.intro-eyebrow{
+  font-family:var(--serif);font-weight:600;font-size:16px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);
+  display:block;line-height:1.7;margin-bottom:14px;padding-left:.24em;
+}
+.intro-names{
+  font-family:var(--script);font-size:clamp(29px,7.6vw,50px);
+  line-height:1.14;padding:.06em 0;margin:0;color:var(--accent-deep);font-weight:400;
+}
+.intro-amp{
+  font-family:var(--serif);font-style:italic;font-size:32px;
+  color:var(--gold);line-height:1;margin:10px 0;display:block;
+}
+.orn-nelly{display:flex;align-items:center;gap:12px;margin:28px auto 0;max-width:260px}
+.orn-nelly .orn-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.orn-nelly .orn-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;opacity:.8}
+.orn-nelly .orn-diamond-sm{width:4px;height:4px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;opacity:.5;margin:0 2px}
+.intro-invite{
+  display:block;margin-top:26px;
+  font-family:var(--serif);font-weight:600;font-size:17px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);line-height:1.85;
+}
+.intro-date{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(17px,4.4vw,22px);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent-deep);line-height:1.6;display:inline-block;
+  margin-top:24px;padding:12px clamp(18px,5vw,30px);
+  border-top:1px solid var(--hair-gold);border-bottom:1px solid var(--hair-gold);
+  background:rgba(184,168,122,.07);
+}
+.invite-verse{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(16px,3.9vw,18px);font-weight:500;line-height:1.85;
+  color:var(--ink-soft);text-align:center;
+  max-width:380px;margin:34px auto 0;padding:32px 8px 22px;
+  border-top:1px solid var(--hair-gold);border-bottom:1px solid var(--hair-gold);
+  position:relative;
+}
+.invite-verse::before{
+  content:'\201C';position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+  font-family:var(--script);font-size:58px;color:var(--gold);opacity:.34;
+  line-height:1;pointer-events:none;
+}
+.invite-verse-txt{margin:0 auto;max-width:340px}
 .family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:900px;margin:0 auto}
 .family-grid--one{grid-template-columns:minmax(0,440px);justify-content:center}
 .family-grid--two{grid-template-columns:repeat(2,1fr);max-width:780px}
@@ -631,7 +690,7 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 
 /* ============ DRESS ============ */
 .dress{text-align:center}
-.dress h2{font-size:clamp(38px,5.5vw,60px);margin-bottom:52px}
+.dress h2{margin-bottom:0}
 .dress-sub{font-family:var(--script);color:var(--gold);font-size:34px;margin-bottom:52px;line-height:1}
 .dc-col-warn{
   font-family:var(--serif);font-style:italic;font-weight:400;
@@ -667,11 +726,6 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 .dc-col > *{position:relative;z-index:1}
 .dc-divider{display:none}
-.dc-warn-solo{
-  font-family:var(--sans);font-size:16px;font-weight:600;
-  color:#65552F;letter-spacing:.02em;line-height:1.5;
-  max-width:420px;margin:30px auto 0;text-align:center;
-}
 .dc-figure{height:clamp(180px,32vw,290px);width:auto;object-fit:contain;object-position:bottom center;margin-bottom:20px;flex-shrink:0;filter:drop-shadow(0 12px 26px rgba(30,42,21,.16));display:block}
 .dc-col-label{font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#65552F;font-weight:600;margin-bottom:10px;padding-left:.3em}
 .dc-col-note{font-family:var(--italiana);font-size:14px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:10px;line-height:1.55;text-align:center}
@@ -715,8 +769,70 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
   .dc-divider::before{background:var(--bg);padding:0 6px}
 }
 
-.dress-note{max-width:660px;margin:54px auto 0;font-family:var(--serif);font-size:19px;font-weight:500;line-height:1.6;color:var(--ink-soft);text-align:center}
-.dress-note b{color:var(--accent-deep);font-weight:600}
+/* ---- Código de vestimenta (dinámica boda-nelly-y-anyelo) ---- */
+.dress-h{
+  font-family:var(--script);font-weight:400;
+  font-size:clamp(46px,11vw,72px);line-height:1.1;padding:.06em 0;
+  color:var(--accent-deep);margin-bottom:0;
+}
+.dress .orn-nelly{margin:18px auto 0}
+.dress-place{
+  display:inline-flex;align-items:center;gap:9px;margin-top:22px;
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  letter-spacing:.32em;text-transform:uppercase;color:#65552F;
+  padding:9px 22px 9px calc(22px + .32em);
+  border:1px solid var(--hair-gold);border-radius:50px;
+  background:rgba(255,255,255,.42);
+}
+.dress-place svg{width:17px;height:17px;flex-shrink:0;color:var(--accent)}
+
+.dc-avoid-wrap{margin:52px auto 0;max-width:420px;padding-top:30px;border-top:1px solid var(--hair-gold)}
+.dc-avoid-head{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:22px}
+.dc-avoid-lbl{
+  font-family:var(--serif);font-weight:600;font-size:15px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);
+  display:block;padding-left:.3em;
+}
+.dc-avoid-lbl strong{color:var(--accent-deep);font-weight:700}
+.dc-avoid-row{display:flex;justify-content:center;gap:clamp(14px,4vw,26px);flex-wrap:wrap;margin-bottom:22px}
+.dc-avoid-sw{display:flex;flex-direction:column;align-items:center;gap:9px}
+.dc-avoid-circle{
+  width:42px;height:42px;border-radius:50%;position:relative;
+  box-shadow:0 3px 12px rgba(30,42,21,.14),inset 0 1px 2px rgba(255,255,255,.4);
+}
+.dc-avoid-circle::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--hair-gold)}
+.dc-avoid-circle.x::before{
+  content:'';position:absolute;inset:0;border-radius:50%;z-index:2;
+  background:linear-gradient(45deg,transparent 46%,rgba(122,104,64,.8) 46%,rgba(122,104,64,.8) 54%,transparent 54%);
+}
+.dc-avoid-name{
+  font-family:var(--serif);font-style:italic;font-size:15px;font-weight:600;
+  color:var(--ink-soft);text-align:center;max-width:86px;line-height:1.35;
+}
+.dc-avoid-msg{
+  font-family:var(--serif);font-style:italic;font-size:18px;font-weight:500;
+  color:var(--ink-soft);text-align:center;line-height:1.7;
+  max-width:360px;margin:0 auto;
+}
+
+.dress-notes{max-width:520px;margin:48px auto 0}
+.dress-note-a{
+  font-family:var(--sans);font-size:17px;font-weight:500;line-height:1.6;
+  color:var(--ink-soft);text-align:center;
+}
+.dress-note-rule{
+  width:120px;height:1px;margin:28px auto;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:.7;
+}
+.dress-note-b{
+  font-family:var(--serif);font-style:italic;font-size:20px;font-weight:500;
+  line-height:1.75;color:var(--accent-deep);text-align:center;
+}
+.dress-closing{
+  font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.65;
+  color:var(--ink);text-align:center;max-width:460px;margin:40px auto 0;
+}
+.dress-closing em{font-family:var(--script);font-style:normal;font-size:1.45em;color:var(--gold-deep);line-height:.9;display:inline-block;vertical-align:-.12em;padding:0 .06em}
 
 /* ============ GALLERY — CARRUSEL 3D (drag para girar) ============ */
 .gallery{text-align:center;overflow:visible}
@@ -1030,6 +1146,13 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .rsvp-btn:hover::after{opacity:1}
 .rsvp-btn > *{position:relative;z-index:1}
 .rsvp-btn[disabled]{opacity:.6;cursor:default}
+.rsvp-gracias{max-width:420px;margin:0 auto;padding:26px 22px;background:rgba(107,143,82,.07);border:1.5px solid rgba(184,168,122,.42);border-radius:16px;text-align:center}
+.rsvp-gracias-icon{color:#33501F;margin:0 auto 10px;display:block}
+.rsvp-gracias-title{font-family:var(--display);font-size:22px;font-weight:600;color:#33501F;margin-bottom:8px;line-height:1.35}
+.rsvp-gracias-sub{font-family:var(--display);font-style:italic;font-size:15.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:18px}
+.rsvp-editar-btn{padding:11px 22px;border:1.5px solid rgba(184,168,122,.5);background:transparent;cursor:pointer;font-family:var(--display);font-style:italic;font-size:15px;color:var(--gold-deep);border-radius:24px;transition:all .25s}
+.rsvp-editar-btn:hover{background:rgba(184,168,122,.14)}
+.rsvp-editar-btn:disabled{opacity:.45;cursor:not-allowed}
 .rsvp-field-row{display:flex;flex-direction:column;gap:8px;text-align:left}
 .rsvp-field-lbl{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#65552F}
 .rsvp-counters{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
@@ -1498,8 +1621,60 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .rsvp-field input{font-size:16px;font-weight:500}
 .album-link{font-weight:600}
 .eyebrow,.cer-eyebrow,.rsvp-pases-eyebrow{font-weight:600;font-size:12px;color:#65552F}
-.intro-editorial{position:relative;overflow:hidden}
-.intro-editorial .fam-intro{margin-bottom:0}
+/* ---- INTRO (diseño boda-nelly-y-anyelo, paleta olivo/crema) ---- */
+.intro-card{position:relative;overflow:hidden;text-align:center}
+.intro-inner{position:relative;z-index:1;max-width:620px;padding-left:clamp(30px,7vw,56px);padding-right:clamp(30px,7vw,56px)}
+.intro-corner{position:absolute;width:84px;height:84px;pointer-events:none;opacity:.6;z-index:0}
+.intro-corner svg{width:100%;height:100%;display:block}
+.ic-tl{top:12px;left:12px}
+.ic-tr{top:12px;right:12px;transform:scaleX(-1)}
+.ic-bl{bottom:12px;left:12px;transform:scaleY(-1)}
+.ic-br{bottom:12px;right:12px;transform:scale(-1)}
+.intro-eyebrow{
+  font-family:var(--serif);font-weight:600;font-size:16px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);
+  display:block;line-height:1.7;margin-bottom:14px;padding-left:.24em;
+}
+.intro-names{
+  font-family:var(--script);font-size:clamp(29px,7.6vw,50px);
+  line-height:1.14;padding:.06em 0;margin:0;color:var(--accent-deep);font-weight:400;
+}
+.intro-amp{
+  font-family:var(--serif);font-style:italic;font-size:32px;
+  color:var(--gold);line-height:1;margin:10px 0;display:block;
+}
+.orn-nelly{display:flex;align-items:center;gap:12px;margin:28px auto 0;max-width:260px}
+.orn-nelly .orn-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.orn-nelly .orn-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;opacity:.8}
+.orn-nelly .orn-diamond-sm{width:4px;height:4px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;opacity:.5;margin:0 2px}
+.intro-invite{
+  display:block;margin-top:26px;
+  font-family:var(--serif);font-weight:600;font-size:17px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);line-height:1.85;
+}
+.intro-date{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(17px,4.4vw,22px);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent-deep);line-height:1.6;display:inline-block;
+  margin-top:24px;padding:12px clamp(18px,5vw,30px);
+  border-top:1px solid var(--hair-gold);border-bottom:1px solid var(--hair-gold);
+  background:rgba(184,168,122,.07);
+}
+.invite-verse{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(16px,3.9vw,18px);font-weight:500;line-height:1.85;
+  color:var(--ink-soft);text-align:center;
+  max-width:380px;margin:34px auto 0;padding:32px 8px 22px;
+  border-top:1px solid var(--hair-gold);border-bottom:1px solid var(--hair-gold);
+  position:relative;
+}
+.invite-verse::before{
+  content:'\201C';position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+  font-family:var(--script);font-size:58px;color:var(--gold);opacity:.34;
+  line-height:1;pointer-events:none;
+}
+.invite-verse-txt{margin:0 auto;max-width:340px}
 .family-grid{margin-top:clamp(38px,5vw,56px) !important}
 .family .container > div[style*="text-align:center"] h2{margin-bottom:0}
 .fam-role{font-size:12px !important;font-weight:600 !important;letter-spacing:.34em;margin-bottom:20px}
@@ -1591,23 +1766,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <!-- DIVIDER: bg → surface -->
   <div class="seam" style="--from:transparent;--to:var(--surface)" aria-hidden="true"></div>
 
-  <!-- INTRO · versículo + invitación -->
-  <section class="section-paper intro-editorial">
-    <span class="mono-wm" aria-hidden="true">G &amp; Z</span>
-    <div class="container">
-      <div class="fam-intro">
-        <svg class="fam-intro-orn" viewBox="0 0 220 14" fill="none" aria-hidden="true">
-          <g stroke="var(--gold)" stroke-width=".9" opacity=".7" fill="none">
-            <path d="M4 7 L92 7" stroke-linecap="round"/>
-            <path d="M128 7 L216 7" stroke-linecap="round"/>
-            <circle cx="110" cy="7" r="3"/>
-            <circle cx="110" cy="7" r="1" fill="var(--gold)" stroke="none"/>
-          </g>
-        </svg>
-        <p class="fam-verse">&ldquo;El amor no reconoce barreras. Salta obstáculos, brinca vallas, penetra paredes para llegar a su destino lleno de esperanza&rdquo;</p>
-        <div class="fam-intro-rule" aria-hidden="true"></div>
-        <p class="fam-invite">Nos complace invitarles a nuestro enlace matrimonial</p>
-        <p class="fam-couple">Gabriel <span class="fam-couple-amp">&amp;</span> Zeltzin</p>
+  <!-- INTRO · invitación formal (diseño boda-nelly-y-anyelo) -->
+  <section class="section-paper intro-card">
+    <span class="intro-corner ic-tl"><svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><path d="M7 7 C26 19 41 29 57 30" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M7 7 C19 26 29 41 30 57" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M30 21 q9 -7 18 -3 q-7 8 -18 3Z" fill="var(--gold)" opacity=".22"/><path d="M45 26 q9 -6 17 -1 q-8 8 -17 1Z" fill="var(--gold)" opacity=".18"/><path d="M21 30 q-7 9 -3 18 q8 -7 3 -18Z" fill="var(--gold)" opacity=".22"/><path d="M26 45 q-6 9 -1 17 q8 -8 1 -17Z" fill="var(--gold)" opacity=".18"/><g transform="translate(12,12)" stroke="var(--gold)" stroke-width="1" opacity=".6" fill="none"><ellipse cx="0" cy="-7.5" rx="3" ry="6.5"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(72)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(144)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(216)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(288)"/><circle cx="0" cy="0" r="2" fill="var(--gold)"/></g></svg></span>
+    <span class="intro-corner ic-tr"><svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><path d="M7 7 C26 19 41 29 57 30" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M7 7 C19 26 29 41 30 57" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M30 21 q9 -7 18 -3 q-7 8 -18 3Z" fill="var(--gold)" opacity=".22"/><path d="M45 26 q9 -6 17 -1 q-8 8 -17 1Z" fill="var(--gold)" opacity=".18"/><path d="M21 30 q-7 9 -3 18 q8 -7 3 -18Z" fill="var(--gold)" opacity=".22"/><path d="M26 45 q-6 9 -1 17 q8 -8 1 -17Z" fill="var(--gold)" opacity=".18"/><g transform="translate(12,12)" stroke="var(--gold)" stroke-width="1" opacity=".6" fill="none"><ellipse cx="0" cy="-7.5" rx="3" ry="6.5"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(72)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(144)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(216)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(288)"/><circle cx="0" cy="0" r="2" fill="var(--gold)"/></g></svg></span>
+    <span class="intro-corner ic-bl"><svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><path d="M7 7 C26 19 41 29 57 30" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M7 7 C19 26 29 41 30 57" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M30 21 q9 -7 18 -3 q-7 8 -18 3Z" fill="var(--gold)" opacity=".22"/><path d="M45 26 q9 -6 17 -1 q-8 8 -17 1Z" fill="var(--gold)" opacity=".18"/><path d="M21 30 q-7 9 -3 18 q8 -7 3 -18Z" fill="var(--gold)" opacity=".22"/><path d="M26 45 q-6 9 -1 17 q8 -8 1 -17Z" fill="var(--gold)" opacity=".18"/><g transform="translate(12,12)" stroke="var(--gold)" stroke-width="1" opacity=".6" fill="none"><ellipse cx="0" cy="-7.5" rx="3" ry="6.5"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(72)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(144)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(216)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(288)"/><circle cx="0" cy="0" r="2" fill="var(--gold)"/></g></svg></span>
+    <span class="intro-corner ic-br"><svg viewBox="0 0 90 90" fill="none" aria-hidden="true"><path d="M7 7 C26 19 41 29 57 30" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M7 7 C19 26 29 41 30 57" stroke="var(--gold)" stroke-width="1" opacity=".5"/><path d="M30 21 q9 -7 18 -3 q-7 8 -18 3Z" fill="var(--gold)" opacity=".22"/><path d="M45 26 q9 -6 17 -1 q-8 8 -17 1Z" fill="var(--gold)" opacity=".18"/><path d="M21 30 q-7 9 -3 18 q8 -7 3 -18Z" fill="var(--gold)" opacity=".22"/><path d="M26 45 q-6 9 -1 17 q8 -8 1 -17Z" fill="var(--gold)" opacity=".18"/><g transform="translate(12,12)" stroke="var(--gold)" stroke-width="1" opacity=".6" fill="none"><ellipse cx="0" cy="-7.5" rx="3" ry="6.5"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(72)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(144)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(216)"/><ellipse cx="0" cy="-7.5" rx="3" ry="6.5" transform="rotate(288)"/><circle cx="0" cy="0" r="2" fill="var(--gold)"/></g></svg></span>
+    <div class="container intro-inner">
+      <span class="intro-eyebrow">Con la bendición de Dios</span>
+      <h2 class="intro-names">Gabriel Valladares Terán</h2>
+      <span class="intro-amp">&amp;</span>
+      <p class="intro-names">Zeltzin Cantorán González</p>
+      <div class="orn-nelly"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+      <span class="intro-invite">Tenemos el honor de invitarles<br>a celebrar nuestra unión en matrimonio</span>
+      <p class="intro-date">Sábado<br>26 de Diciembre de 2026</p>
+      <div class="invite-verse">
+        <p class="invite-verse-txt">El amor no reconoce barreras. Salta obstáculos, brinca vallas, penetra paredes para llegar a su destino lleno de esperanza</p>
       </div>
     </div>
   </section>
@@ -1631,12 +1805,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <div class="date-lbl">Sábado</div>
         </div>
       </div>
-      <a class="cal-btn" id="cal-btn" href="#" download="boda-gabriel-y-zeltzin.ics">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M9 15l2 2 4-4"/>
-        </svg>
-        Guardar en calendario
-      </a>
+      <div class="cal-row">
+        <a class="cal-btn" id="cal-google" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M9 15l2 2 4-4"/>
+          </svg>
+          Google Calendar
+        </a>
+        <a class="cal-btn cal-btn--alt" id="cal-apple" href="#" download="boda-gabriel-y-zeltzin.ics">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.3-3.1zM14.2 6.2c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2z"/>
+          </svg>
+          Apple Calendar
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1808,7 +1990,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             </div>
           </li>
           <li class="itin-event">
-            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V6l12-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+            <span class="itin-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 16.5a9.5 9.5 0 0119 0z"/><path d="M2.5 16.5c0 1.4 1 2.2 2.2 2.2h14.6c1.2 0 2.2-.8 2.2-2.2"/><path d="M7 15.2c.9-1.1 2-1.1 2.9 0M11.6 14.6c.9-1.1 2-1.1 2.9 0M16 15.4c.6-.8 1.4-.9 2-.3"/></svg></span>
             <div class="itin-card">
               <div class="itin-time">00:00</div>
               <div class="itin-name">Tornaboda</div>
@@ -1826,9 +2008,36 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <section class="section-bg dress">
     <div class="container">
       <div class="eyebrow">Código de vestimenta</div>
-      <h2>Casual Formal<br><span class="dress-sub-line">Jardín</span></h2>
-      <p class="dc-warn-solo">Los tonos <b>blanco</b>, <b>beige</b>, <b>ivory</b> y sus derivados están reservados exclusivamente para la novia.</p>
-      <p class="dress-note">El evento será en jardín — tenlo en cuenta al elegir tu calzado.<br>Arréglate bonito, que habrá fotógrafo y gente chismosa. Trae tu mejor versión y tus pasos prohibidos.<br><b>Pero lo más importante es tu presencia y tu sonrisa.</b></p>
+      <h2 class="dress-h">Casual Formal</h2>
+      <div class="orn-nelly"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+      <div class="dress-place">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c0-5 0-8 0-8"/><path d="M12 13c-4 0-6-2.4-6-5.4C6 4.8 8.6 3 12 3s6 1.8 6 4.6c0 3-2 5.4-6 5.4z"/><path d="M9.2 8.4h5.6"/></svg>
+        Jardín
+      </div>
+
+      <!-- Tonos reservados a la novia -->
+      <div class="dc-avoid-wrap">
+        <div class="dc-avoid-head">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="var(--gold-deep)" stroke-width="1.7"/><line x1="5.4" y1="5.4" x2="18.6" y2="18.6" stroke="var(--gold-deep)" stroke-width="1.7"/></svg>
+          <span class="dc-avoid-lbl">Tonos <strong>reservados</strong></span>
+        </div>
+        <div class="dc-avoid-row">
+          <div class="dc-avoid-sw"><div class="dc-avoid-circle x" style="background:#FFFFFF;border:1px solid #E2DCCB"></div><span class="dc-avoid-name">Blanco</span></div>
+          <div class="dc-avoid-sw"><div class="dc-avoid-circle x" style="background:#F0EBDC"></div><span class="dc-avoid-name">Beige</span></div>
+          <div class="dc-avoid-sw"><div class="dc-avoid-circle x" style="background:#FBF7EA"></div><span class="dc-avoid-name">Ivory</span></div>
+          <div class="dc-avoid-sw"><div class="dc-avoid-circle x" style="background:#F2EFE6"></div><span class="dc-avoid-name">Blanco humo</span></div>
+        </div>
+        <p class="dc-avoid-msg">Estos tonos y sus derivados están reservados exclusivamente para la novia.</p>
+      </div>
+
+      <!-- Notas del día -->
+      <div class="dress-notes">
+        <p class="dress-note-a">El evento será en jardín — tenlo en cuenta al elegir tu calzado.</p>
+        <div class="dress-note-rule" aria-hidden="true"></div>
+        <p class="dress-note-b">&ldquo;Arréglate bonito, que habrá fotógrafo y gente chismosa.<br>Trae tu mejor versión y tus pasos prohibidos.&rdquo;</p>
+      </div>
+
+      <p class="dress-closing">Pero lo más importante es <em>tu presencia</em> y tu sonrisa</p>
     </div>
   </section>
 
@@ -2026,16 +2235,32 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
           </div>
 
-          <div class="rsvp-toggle">
-            <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Ahí estaré!</button>
-            <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+          <div id="rsvp-bandeja">
+            <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
+              <span class="rsvp-pases-label">Pases</span>
+              <span class="rsvp-pases-num" id="rsvp-pases-num">1</span>
+            </div>
+
+            <div class="rsvp-toggle">
+              <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Ahí estaré!</button>
+              <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+            </div>
+
+            <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+
+            <button class="rsvp-btn" id="rsvp-confirm-btn" type="button">
+              <span id="rsvp-btn-text">Confirmar</span>
+            </button>
           </div>
 
-          <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
-
-          <button class="rsvp-btn" id="rsvp-confirm-btn" type="button">
-            <span id="rsvp-btn-text">Confirmar</span>
-          </button>
+          <div class="rsvp-gracias" id="rsvp-gracias" style="display:none">
+            <svg class="rsvp-gracias-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/>
+            </svg>
+            <p class="rsvp-gracias-title" id="rsvp-gracias-title"></p>
+            <p class="rsvp-gracias-sub" id="rsvp-gracias-sub"></p>
+            <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button">Modificar mi respuesta</button>
+          </div>
 
           <p id="rsvp-feedback" role="status" aria-live="polite"></p>
 
@@ -2769,52 +2994,53 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
   var urlPases = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
 
   var rsvpChoice = null;
-  var pasesNumEl = document.getElementById('rsvp-pases-num');
-  var fieldsEl   = document.getElementById('rsvp-fields');
-  var btnYes     = document.getElementById('btnYes');
-  var btnNo      = document.getElementById('btnNo');
-  var confirmBtn = document.getElementById('rsvp-confirm-btn');
-  var btnText    = document.getElementById('rsvp-btn-text');
-  var feedbackEl = document.getElementById('rsvp-feedback');
-  var nameEl     = document.getElementById('rsvp-name-display');
+  var savedNames = [];
+  var pasesDispEl = document.getElementById('rsvp-pases-display');
+  var pasesNumEl  = document.getElementById('rsvp-pases-num');
+  var fieldsEl    = document.getElementById('rsvp-fields');
+  var btnYes      = document.getElementById('btnYes');
+  var btnNo       = document.getElementById('btnNo');
+  var confirmBtn  = document.getElementById('rsvp-confirm-btn');
+  var btnText     = document.getElementById('rsvp-btn-text');
+  var feedbackEl  = document.getElementById('rsvp-feedback');
+  var nameEl      = document.getElementById('rsvp-name-display');
+  var bandejaEl   = document.getElementById('rsvp-bandeja');
+  var graciasEl   = document.getElementById('rsvp-gracias');
+  var gTitleEl    = document.getElementById('rsvp-gracias-title');
+  var gSubEl      = document.getElementById('rsvp-gracias-sub');
+  var editarBtn   = document.getElementById('rsvp-editar-btn');
+  if (!confirmBtn || !btnYes) return;
 
-  if (pasesNumEl) pasesNumEl.textContent = urlPases;
+  function pintaPases(){
+    if (pasesNumEl) pasesNumEl.textContent = urlPases;
+    if (pasesDispEl) pasesDispEl.style.display = urlPara ? 'flex' : 'none';
+  }
+  pintaPases();
   if (urlPara && nameEl) { nameEl.textContent = urlPara; nameEl.style.display = 'block'; }
 
+  function msg(text, color){
+    if (!feedbackEl) return;
+    if (!text) { feedbackEl.textContent = ''; feedbackEl.style.display = 'none'; return; }
+    feedbackEl.textContent = text;
+    feedbackEl.style.display = '';
+    feedbackEl.style.color = color;
+  }
+
+  // Un campo por pase asignado.
   function renderFields(){
     if (!fieldsEl) return;
-    fieldsEl.innerHTML =
-      '<div class="rsvp-field-row">' +
-        '<label class="rsvp-field-lbl" for="rsvp-nombre">Nombre del invitado</label>' +
-        '<input class="rsvp-input" id="rsvp-nombre" type="text" placeholder="Nombre completo" autocomplete="off"' +
-          (urlPara ? ' value="' + urlPara.replace(/"/g, '&quot;') + '"' : '') + '>' +
-      '</div>' +
-      '<div class="rsvp-counters">' +
-        '<div class="rsvp-counter">' +
-          '<span class="rsvp-counter-lbl">Adultos</span>' +
-          '<div class="rsvp-stepper">' +
-            '<button type="button" class="rsvp-step" data-t="adultos" data-d="-1" aria-label="Menos adultos">−</button>' +
-            '<span class="rsvp-count" id="rsvp-adultos">1</span>' +
-            '<button type="button" class="rsvp-step" data-t="adultos" data-d="1" aria-label="Más adultos">+</button>' +
-          '</div>' +
-        '</div>' +
-        '<div class="rsvp-counter">' +
-          '<span class="rsvp-counter-lbl">Niños</span>' +
-          '<div class="rsvp-stepper">' +
-            '<button type="button" class="rsvp-step" data-t="ninos" data-d="-1" aria-label="Menos niños">−</button>' +
-            '<span class="rsvp-count" id="rsvp-ninos">0</span>' +
-            '<button type="button" class="rsvp-step" data-t="ninos" data-d="1" aria-label="Más niños">+</button>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    fieldsEl.querySelectorAll('.rsvp-step').forEach(function(b){
-      b.addEventListener('click', function(){
-        var el = document.getElementById('rsvp-' + b.dataset.t);
-        var min = b.dataset.t === 'adultos' ? 1 : 0;
-        var v = Math.max(min, Math.min(20, parseInt(el.textContent, 10) + parseInt(b.dataset.d, 10)));
-        el.textContent = v;
-      });
-    });
+    fieldsEl.innerHTML = '';
+    for (var i = 0; i < urlPases; i++){
+      var inp = document.createElement('input');
+      inp.type = 'text';
+      inp.className = 'rsvp-input';
+      inp.placeholder = 'Nombre completo del invitado ' + (i + 1);
+      inp.autocomplete = 'off';
+      inp.maxLength = 60;
+      inp.value = savedNames[i] || '';
+      (function(idx){ inp.addEventListener('input', function(){ savedNames[idx] = this.value; }); })(i);
+      fieldsEl.appendChild(inp);
+    }
   }
 
   function selectRsvp(choice){
@@ -2836,108 +3062,129 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
         fieldsEl.style.display = 'none';
       }
     }
+    msg('', '');
     if (window.ScrollTrigger) ScrollTrigger.refresh();
   }
 
-  function msg(text, color){
-    if (!feedbackEl) return;
-    feedbackEl.textContent = text;
-    feedbackEl.style.display = '';
-    feedbackEl.style.color = color;
+  // Cierra la bandeja y muestra el agradecimiento con el resumen.
+  function mostrarGracias(estado, nombres){
+    var lista = (nombres || []).filter(function(n){ return n && n.trim(); });
+    if (estado === 'confirmado'){
+      gTitleEl.textContent = '¡Gracias por confirmar!';
+      gSubEl.textContent = lista.length === 1
+        ? 'Te esperamos, ' + lista[0] + '.'
+        : 'Confirmamos ' + lista.length + ' lugares: ' + lista.join(', ') + '.';
+    } else {
+      gTitleEl.textContent = 'Gracias por avisarnos';
+      gSubEl.textContent = 'Lamentamos que no puedas acompañarnos. Te vamos a extrañar.';
+    }
+    bandejaEl.style.display = 'none';
+    graciasEl.style.display = '';
+    editarBtn.disabled = frozen;
+    msg('', '');
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
   }
 
-  // Precarga: si ya respondió, reflejarlo y permitir actualizar
-  if (urlPara){
-    fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
-      .then(function(r){ return r.json(); })
-      .then(function(d){
-        if (!d.ok || !d.invitado) return;
-        var inv = d.invitado;
-        if (inv.estado === 'confirmado'){
-          selectRsvp('yes');
-          if (btnText) btnText.textContent = 'Actualizar respuesta';
-          var prev = inv.nombres_confirmados || [];
-          if (prev.length){
-            var m = String(prev[0]).match(/^(.*?)\s*·\s*(\d+)\s*adulto[s]?(?:\s*y\s*(\d+)\s*niño[s]?)?/);
-            var nomEl = document.getElementById('rsvp-nombre');
-            if (m && nomEl){
-              nomEl.value = m[1];
-              document.getElementById('rsvp-adultos').textContent = m[2];
-              document.getElementById('rsvp-ninos').textContent = m[3] || '0';
-            } else if (nomEl){ nomEl.value = prev[0]; }
-          }
-        } else if (inv.estado === 'declino'){
-          selectRsvp('no');
-          if (btnText) btnText.textContent = 'Actualizar respuesta';
-        }
-      }).catch(function(){});
+  // Reabre la bandeja conservando lo ya capturado.
+  function abrirBandeja(){
+    graciasEl.style.display = 'none';
+    bandejaEl.style.display = '';
+    msg('', '');
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
   }
 
-  if (frozen){
+  editarBtn.addEventListener('click', function(){ if (!frozen) abrirBandeja(); });
+
+  function applyFreeze(){
+    if (!frozen) return;
     if (btnYes) btnYes.disabled = true;
     if (btnNo) btnNo.disabled = true;
     if (confirmBtn) confirmBtn.disabled = true;
     if (btnText) btnText.textContent = 'Fecha límite vencida';
-    return;
+    if (editarBtn) editarBtn.disabled = true;
   }
 
-  if (btnYes) btnYes.addEventListener('click', function(){ selectRsvp('yes'); });
-  if (btnNo)  btnNo.addEventListener('click',  function(){ selectRsvp('no'); });
-
-  if (confirmBtn){
-    confirmBtn.addEventListener('click', function(){
-      if (!rsvpChoice){
-        msg('Por favor elige si nos acompañarás.', 'var(--gold-deep)');
-        return;
-      }
-      var adultos = 0, ninos = 0, nombreInv = '';
-      if (rsvpChoice === 'yes' && fieldsEl){
-        var inp = document.getElementById('rsvp-nombre');
-        nombreInv = inp ? inp.value.trim() : '';
-        adultos = parseInt((document.getElementById('rsvp-adultos') || {}).textContent || '1', 10);
-        ninos   = parseInt((document.getElementById('rsvp-ninos')   || {}).textContent || '0', 10);
-      }
-      var nombre = nombreInv || urlPara || '';
-      var nombres = [];
-      if (rsvpChoice === 'yes'){
-        nombres.push(nombre + ' · ' + adultos + ' adulto' + (adultos === 1 ? '' : 's') +
-                     (ninos > 0 ? ' y ' + ninos + ' niño' + (ninos === 1 ? '' : 's') : ''));
-      }
-      if (!nombre){
-        msg('Por favor escribe tu nombre.', 'var(--gold-deep)');
-        return;
-      }
-      confirmBtn.disabled = true;
-      if (btnText) btnText.textContent = 'Enviando…';
-      fetch(PANEL_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nombre: nombre,
-          url_boda: RSVP_URL,
-          estado: rsvpChoice === 'yes' ? 'confirmado' : 'declino',
-          pases: urlPases,
-          pases_confirmados: rsvpChoice === 'yes' ? (adultos + ninos) : 0,
-          nombres_confirmados: rsvpChoice === 'yes' ? nombres : []
-        })
+  // Precarga: si ya respondió, reflejarlo y permitir actualizar.
+  if (urlPara){
+    if (!frozen){ btnYes.disabled = true; btnNo.disabled = true; confirmBtn.disabled = true; }
+    fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var inv = d && d.invitado;
+        if (inv && typeof inv.pases === 'number' && inv.pases > 0 && inv.pases <= 20){
+          urlPases = inv.pases;
+        }
+        pintaPases();
+        if (!frozen){ btnYes.disabled = false; btnNo.disabled = false; confirmBtn.disabled = false; }
+        if (inv && (inv.estado === 'confirmado' || inv.estado === 'declino')){
+          if (inv.nombres_confirmados && inv.nombres_confirmados.length){
+            savedNames = inv.nombres_confirmados.slice();
+          }
+          selectRsvp(inv.estado === 'confirmado' ? 'yes' : 'no');
+          if (btnText) btnText.textContent = 'Actualizar respuesta';
+          // Ya hay respuesta guardada: la sección arranca cerrada.
+          mostrarGracias(inv.estado, savedNames);
+        }
+        applyFreeze();
       })
-      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function(resp){
-        if (resp && resp.error) throw new Error(resp.error);
-        confirmBtn.disabled = false;
-        if (btnText) btnText.textContent = 'Actualizar respuesta';
-        msg(rsvpChoice === 'yes'
-          ? '¡Gracias! Tu asistencia quedó confirmada. Nos vemos el 26 de diciembre.'
-          : 'Respuesta guardada. ¡Gracias por avisarnos!',
-          rsvpChoice === 'yes' ? '#33501F' : 'var(--gold-deep)');
-      })
-      .catch(function(){
-        confirmBtn.disabled = false;
-        if (btnText) btnText.textContent = 'Confirmar';
-        msg('No pudimos guardar tu respuesta. Revisa tu conexión e inténtalo de nuevo.', '#8A3A2E');
+      .catch(function(err){
+        console.error('RSVP precarga:', err);
+        pintaPases();
+        if (!frozen){ btnYes.disabled = false; btnNo.disabled = false; confirmBtn.disabled = false; }
+        applyFreeze();
       });
-    });
+  } else {
+    applyFreeze();
   }
+
+  btnYes.addEventListener('click', function(){ if (!frozen) selectRsvp('yes'); });
+  btnNo.addEventListener('click',  function(){ if (!frozen) selectRsvp('no'); });
+
+  confirmBtn.addEventListener('click', function(){
+    if (frozen) return;
+    if (!rsvpChoice){
+      msg('Por favor elige si nos acompañarás.', 'var(--gold-deep)');
+      return;
+    }
+    var nombres = [];
+    if (rsvpChoice === 'yes'){
+      nombres = Array.prototype.slice.call(fieldsEl.querySelectorAll('.rsvp-input'))
+        .map(function(i){ return i.value.trim(); })
+        .filter(function(n){ return n.length > 0; });
+      if (nombres.length === 0){
+        msg('Por favor escribe al menos un nombre.', 'var(--gold-deep)');
+        var first = fieldsEl.querySelector('.rsvp-input');
+        if (first) first.focus();
+        return;
+      }
+    }
+    confirmBtn.disabled = true;
+    if (btnText) btnText.textContent = 'Enviando…';
+    msg('', '');
+    fetch(PANEL_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nombre: urlPara || 'Invitado',
+        url_boda: RSVP_URL,
+        estado: rsvpChoice === 'yes' ? 'confirmado' : 'declino',
+        pases_confirmados: rsvpChoice === 'yes' ? nombres.length : 0,
+        nombres_confirmados: rsvpChoice === 'yes' ? nombres : []
+      })
+    })
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(resp){
+      if (resp && resp.error) throw new Error(resp.error);
+      confirmBtn.disabled = false;
+      if (btnText) btnText.textContent = 'Actualizar respuesta';
+      mostrarGracias(rsvpChoice === 'yes' ? 'confirmado' : 'declino', nombres);
+    })
+    .catch(function(){
+      confirmBtn.disabled = false;
+      if (btnText) btnText.textContent = 'Confirmar';
+      msg('No pudimos guardar tu respuesta. Revisa tu conexión e inténtalo de nuevo.', '#8A3A2E');
+    });
+  });
 })();
 
 // ------ HOSPEDAJE · carrusel swipe ------
@@ -2970,24 +3217,41 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
     {opacity:1,y:0,scale:1,duration:.9,ease:'power4.out',scrollTrigger:{trigger:'#lodging',start:'top 80%',once:true}});
 })();
 
-// ------ GUARDAR EN CALENDARIO (.ics) ------
+// ------ GUARDAR EN CALENDARIO (Google + Apple) ------
 (function(){
-  var btn = document.getElementById('cal-btn');
-  if(!btn) return;
-  var ics = [
-    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Elysium Invitaciones//Boda//ES',
-    'CALSCALE:GREGORIAN','BEGIN:VEVENT',
-    'UID:boda-gabriel-zeltzin-2026@elysium',
-    'DTSTAMP:20260821T000000Z',
-    'DTSTART:20261226T223000Z',   // 16:30 hrs (UTC-6)
-    'DTEND:20261227T060000Z',
-    'SUMMARY:Boda de Gabriel y Zeltzin',
-    'DESCRIPTION:Nos casamos. Te esperamos en Jardín del Lago, Tequesquitengo.',
-    'LOCATION:Jardín del Lago, Av. Circunvalación s/n, Tequesquitengo, 62909 Puente de Ixtla, Morelos',
-    'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Mañana es la boda de Gabriel y Zeltzin','END:VALARM',
-    'END:VEVENT','END:VCALENDAR'
-  ].join('\\r\\n');
-  btn.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  var TITULO = 'Boda de Gabriel y Zeltzin';
+  var DESC   = 'Nos casamos. Te esperamos en Jardín del Lago, Tequesquitengo.';
+  var LUGAR  = 'Jardín del Lago, Av. Circunvalación s/n, Tequesquitengo, 62909 Puente de Ixtla, Morelos';
+  var INI    = '20261226T223000Z';   // 26 dic 2026, 16:30 hrs (UTC-6)
+  var FIN    = '20261227T060000Z';   // 00:00 hrs
+
+  var g = document.getElementById('cal-google');
+  if(g){
+    g.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text='     + encodeURIComponent(TITULO)
+      + '&dates='    + INI + '/' + FIN
+      + '&details='  + encodeURIComponent(DESC)
+      + '&location=' + encodeURIComponent(LUGAR)
+      + '&ctz=America/Mexico_City';
+  }
+
+  var a = document.getElementById('cal-apple');
+  if(a){
+    var ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Elysium Invitaciones//Boda//ES',
+      'CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
+      'UID:boda-gabriel-zeltzin-2026@elysium',
+      'DTSTAMP:20260821T000000Z',
+      'DTSTART:' + INI,
+      'DTEND:'   + FIN,
+      'SUMMARY:' + TITULO,
+      'DESCRIPTION:' + DESC,
+      'LOCATION:' + LUGAR.replace(/,/g, '\\,'),
+      'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Mañana es la boda de Gabriel y Zeltzin','END:VALARM',
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  }
 })();
 
 // ------ MUSIC BUTTON (vinilo play/pause) ------
